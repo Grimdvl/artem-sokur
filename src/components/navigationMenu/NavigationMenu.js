@@ -96,35 +96,43 @@ const NavigationMenu = () => {
 
     navigation('.navigation__link', 'active', 'section', '.indicator');
     return (
-        <div class="wrapper-nav">
-            <div class="navigation">
-                <ul class="navigation__list">
-                    <li class="navigation__link">
-                        <a href="#resume" class="navigation__link-item">
-                            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                        </a>
-                    </li>
-                    <li class="navigation__link">
-                        <a href="#skills" class="navigation__link-item">
-                            <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
-                        </a>
-                    </li>
-                    <li class="navigation__link">
-                        <a href="#portfolio" class="navigation__link-item">
-                            <span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span>
-                        </a>
-                    </li>
-                    <li class="navigation__link">
-                        <a href="#contacts" class="navigation__link-item">
-                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                        </a>
-                    </li>
-                    <div class="indicator hide"></div>
+        <div className="wrapper-nav">
+            <nav className="navigation">
+                <ul className="navigation__list">
+                <li className="navigation__link">
+                <a href="#resume" className="navigation__link-item">
+                    <span className="icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                </a>
+                </li>
+                <li className="navigation__link">
+                <a href="#skills" className="navigation__link-item">
+                    <span className="icon">
+                    <ion-icon name="school-outline"></ion-icon>
+                </span>
+                </a>
+                </li>
+                <li className="navigation__link">
+                <a href="#portfolio" className="navigation__link-item">
+                    <span className="icon">
+                    <ion-icon name="briefcase-outline"></ion-icon>
+                    </span>
+                </a>
+                </li>
+                <li className="navigation__link">
+                    <a href="#contacts" className="navigation__link-item">
+                        <span className="icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    </a>
+                </li>
+                <div className="indicator hide"></div>
                 </ul>
-            </div>
-            
-            <a href="#promo" class="home">
-                <i class='home--up bx bx-chevron-up'></i>
+            </nav>
+
+            <a href="#promo" className="home">
+                <i className='home--up bx bx-chevron-up'></i>
             </a>
         </div>
     );
