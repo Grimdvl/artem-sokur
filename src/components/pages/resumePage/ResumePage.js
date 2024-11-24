@@ -12,7 +12,7 @@ const ResumePage = () => {
 
             <div className="resume__wrapper">
                 <div className="resume__photo">
-                    <img src={mainPhoto} alt="photo"/>
+                    <img src={mainPhoto} alt="mainPhoto"/>
                 </div>
 
                     <div className="resume__column">

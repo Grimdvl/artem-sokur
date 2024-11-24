@@ -3,9 +3,9 @@ import NavigationMenu from '../navigationMenu/NavigationMenu';
 import {
     PromoPage,
     ResumePage,
-    // SkillsPage,
-    // PortfolioPage,
-    // ContactsPage
+    SkillsPage,
+    PortfolioPage,
+    ContactsPage
 } from '../pages';
 
 function App() {
