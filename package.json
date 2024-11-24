@@ -2,7 +2,7 @@
   "name": "artem-sokur",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://grimdvl.github.io/artem-sokur/",
+  "homepage": "https://grimdvl.github.io/artem-sokur",
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "@testing-library/jest-dom": "^5.17.0",

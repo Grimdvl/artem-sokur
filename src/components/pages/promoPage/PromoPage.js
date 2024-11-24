@@ -11,7 +11,7 @@ const PromoPage = () => {
                 <div className="divider"></div>
 
                 <p className="promo__content-description">I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.</p>
-                <a href="#" className="promo__content--button">Download CV</a>
+                <button className="promo__content--button">Download CV</button>
             </div>
             <div className="promo__photo">
                 <span className="promo__photo-circle"></span>

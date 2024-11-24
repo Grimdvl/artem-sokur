@@ -100,28 +100,28 @@ const NavigationMenu = () => {
             <nav className="navigation">
                 <ul className="navigation__list">
                 <li className="navigation__link">
-                <a href="#resume" className="navigation__link-item">
+                <a href="#resume" target="_blank" rel="noopener noreferrer" className="navigation__link-item">
                     <span className="icon">
                     <ion-icon name="person-outline"></ion-icon>
                     </span>
                 </a>
                 </li>
                 <li className="navigation__link">
-                <a href="#skills" className="navigation__link-item">
+                <a href="#skills" target="_blank" rel="noopener noreferrer" className="navigation__link-item">
                     <span className="icon">
                     <ion-icon name="school-outline"></ion-icon>
                 </span>
                 </a>
                 </li>
                 <li className="navigation__link">
-                <a href="#portfolio" className="navigation__link-item">
+                <a href="#portfolio" target="_blank" rel="noopener noreferrer" className="navigation__link-item">
                     <span className="icon">
                     <ion-icon name="briefcase-outline"></ion-icon>
                     </span>
                 </a>
                 </li>
                 <li className="navigation__link">
-                    <a href="#contacts" className="navigation__link-item">
+                    <a href="#contacts" target="_blank" rel="noopener noreferrer" className="navigation__link-item">
                         <span className="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
