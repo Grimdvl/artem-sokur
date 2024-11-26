@@ -8,7 +8,7 @@ const PortfolioPage = () => {
             </div>
 
             <div className="portfolio__items">
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/uber.jpg" alt="uber-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Uber</h3>
@@ -19,7 +19,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pulse.jpg" alt="pulse-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pulse</h3>
@@ -30,7 +30,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/food.jpg" alt="food-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Food</h3>
@@ -41,7 +41,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="portfolio__items-item" tabindex="1">
+                {/* <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/Katherine.jpg" alt="Katherine-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Katherine Chafer</h3>
@@ -52,7 +52,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div> */}
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/wordpress.jpg" alt="WordPress-project"/>
                     <div className="descr">
                         <h3 className="descr-title">WordPress</h3>
@@ -63,7 +63,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/balcony.jpg" alt="balcony-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Balcony</h3>
@@ -74,7 +74,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/art.jpg" alt="art-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Art</h3>
@@ -85,7 +85,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/loan.jpg" alt="loan-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Loan</h3>
@@ -96,7 +96,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -108,7 +108,7 @@ const PortfolioPage = () => {
                     </div>
                 </div>
 
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -119,7 +119,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -130,7 +130,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -141,7 +141,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -152,7 +152,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>
@@ -163,7 +163,7 @@ const PortfolioPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="portfolio__items-item" tabindex="1">
+                <div className="portfolio__items-item" tabIndex="1">
                     <img className="img" src="img/works/pokemons.jpg" alt="pokemon-project"/>
                     <div className="descr">
                         <h3 className="descr-title">Pokemons</h3>

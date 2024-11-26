@@ -22,19 +22,19 @@ const ContactsPage = () => {
                 <form action="#" className="contacts__form">
                     <div className="contacts__input">
                         <input required name="name" id="name" type="text"/>
-                        <label for="name">Your name</label>
+                        <label htmlFor="name">Your name</label>
                     </div>
                     <div className="contacts__input">
                         <input required name="phone" id="phone" type="phone"/>
-                        <label for="phone">Your number</label>
+                        <label htmlFor="phone">Your number</label>
                     </div>
                     <div className="contacts__input">
                         <input required name="email" id="email" type="email"/>
-                        <label for="email">Your email</label>
+                        <label htmlFor="email">Your email</label>
                     </div>
                     <div className="contacts__textarea">
                         <textarea required name="text" id="text"></textarea>
-                        <label for="text">Your message</label>
+                        <label htmlFor="text">Your message</label>
                     </div>
                     <div className="contacts__triggers">
                         <button className="contacts__btn btn">Send message</button>
