@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import promoPhoto from '../../../assets/img/promo-photo.png';
 
 const PromoPage = () => {
-    const [showContent, setShowContent] = useState(false);
+    const [
+        // showContent,
+        setShowContent] = useState(false);
 
     useEffect(() => {
         setShowContent(true);

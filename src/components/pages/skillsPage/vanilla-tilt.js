@@ -10,7 +10,7 @@ var VanillaTilt = (function () {
 class VanillaTilt {
   constructor(element, settings = {}) {
     if (!(element instanceof Node)) {
-      throw ("Can't initialize VanillaTilt because " + element + " is not a Node.");
+      throw new Error("Can't initialize VanillaTilt because " + element + " is not a Node.");
     }
 
     this.width = null;
