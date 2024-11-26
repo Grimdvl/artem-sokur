@@ -1,16 +1,16 @@
 // import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 import promoPhoto from '../../../assets/img/promo-photo.png';
 
 const PromoPage = () => {
-    const [
-        // showContent,
-        setShowContent] = useState(false);
+    // const [
+    //     showContent,
+    //     setShowContent] = useState(false);
 
-    useEffect(() => {
-        setShowContent(true);
-    }, []);
+    // useEffect(() => {
+    //     setShowContent(true);
+    // }, []);
 
     return (
         <section
