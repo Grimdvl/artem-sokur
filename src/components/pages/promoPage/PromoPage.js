@@ -1,4 +1,4 @@
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 
 import promoPhoto from '../../../assets/img/promo-photo.png';
