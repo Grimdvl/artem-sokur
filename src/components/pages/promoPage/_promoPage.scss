@@ -4,7 +4,13 @@
     align-items: center;
     &__photo {
         position: relative;
-        opacity: 0;
+        &.zoomIn {
+            &-enter {
+                &-active, &-done {
+                    transition-delay: 1s;
+                }
+            }
+        }
         &-img {
             width: 30vw;
             background-color: white;
@@ -37,7 +43,6 @@
             font-size: 5.6rem;
             font-weight: 700;
             line-height: 1.3;
-            opacity: 0;
             @include before_circle;
             &::before {
                 top: -.2em;
@@ -47,9 +52,22 @@
             }
         }
         .wrapper-subtitle {
-            opacity: 0;
+            &.slideRight {
+                &-enter {
+                    &-active, &-done {
+                        transition-delay: .5s;
+                    }
+                }
+            }
         }
         &-subtitle {
+            &.slideRight {
+                &-enter {
+                    &-active, &-done {
+                        transition-delay: .5s;
+                    }
+                }
+            }
             position: relative;
             font-size: 3.2rem;
             font-weight: 700;
@@ -76,13 +94,18 @@
             }
         }
         &-description {
-            opacity: 0;
+            &.slideLeft {
+                &-enter {
+                    &-active, &-done {
+                        transition-delay: .5s;
+                    }
+                }
+            }
             font-size: 1.6rem;
             margin: 2rem 0 4rem;
         }
         &--button {
             cursor: pointer;
-            opacity: 0;
             position: relative;
             display: inline-flex;
             width: 20rem;
@@ -98,31 +121,11 @@
             letter-spacing: .1rem;
             z-index: 1;
             overflow: hidden;
-            transition: .5s color;
             box-shadow: 0 0 1rem $main-color;
             transition: .5s box-shadow, .5s color, .5s background-color, .5s border;
             will-change: color, background-color, box-shadow, border;
             &:hover {
                 box-shadow: none;
-            }
-        }
-    }
-    .animated & {
-        &__photo {
-            animation: zoomIn 1s 1s ease forwards;
-        }
-        &__content {
-            &-title {
-                animation: slideBottom 1s ease forwards;
-            }
-            &-description {
-                animation: slideLeft 1s .5s ease forwards;
-            }
-            .wrapper-subtitle {
-                animation: slideRight 1s .5s ease forwards;
-            }
-            &--button {
-                animation: slideTop 1s 1s ease forwards;
             }
         }
     }

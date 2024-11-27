@@ -1,70 +1,79 @@
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
-// import { useState, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import {useState, useEffect } from 'react';
 
 import promoPhoto from '../../../assets/img/promo-photo.png';
 
 const PromoPage = () => {
-    // const [
-    //     showContent,
-    //     setShowContent] = useState(false);
+    const [showContent, setShowContent] = useState(false);
 
-    // useEffect(() => {
-    //     setShowContent(true);
-    // }, []);
+    useEffect(() => {
+        setShowContent(true);
+    }, []);
 
     return (
-        <section
-        className="promo animated" id="promo"
-        >
+
+        <section className="promo" id="promo">
             <div className="promo__content">
-                <h1 className="promo__content-title">Hi, I'm Artem Sokur</h1>
-                <div className="wrapper-subtitle">
-                    <span className="promo__content-subtitle">Frontend Developer</span>
+                <CSSTransition
+                    in={showContent}
+                    timeout={0}
+                    classNames="slideBottom"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                    <h1 className="promo__content-title">Hi, I'm Artem Sokur</h1>
+                </CSSTransition>
+                <CSSTransition
+                    in={showContent}
+                    timeout={500}
+                    classNames="slideRight"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                    <div className="wrapper-subtitle">
+                        <span className="promo__content-subtitle">Frontend Developer</span>
+                    </div>
+                </CSSTransition>
+                <CSSTransition
+                    in={showContent}
+                    timeout={0}
+                    classNames="slideTop"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                    <div className="divider"></div>
+                </CSSTransition>
+                <CSSTransition
+                    in={showContent}
+                    timeout={500}
+                    classNames="slideLeft"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                    <p className="promo__content-description">I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.</p>
+                </CSSTransition>
+                <CSSTransition
+                    in={showContent}
+                    timeout={1000}
+                    classNames="slideTop"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                    <button className="promo__content--button">Download CV</button>
+                </CSSTransition>
+            </div>
+            <CSSTransition
+                    in={showContent}
+                    timeout={1000}
+                    classNames="zoomIn"
+                    mountOnEnter
+                    unmountOnExit
+                    >
+                <div className="promo__photo">
+                    <span className="promo__photo-circle"></span>
+                    <img className="promo__photo-img" src={promoPhoto} alt="Artem Sokur"/>
                 </div>
-                <div className="divider"></div>
-
-                <p className="promo__content-description">I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.</p>
-                <button className="promo__content--button">Download CV</button>
-            </div>
-            <div className="promo__photo">
-                <span className="promo__photo-circle"></span>
-                <img className="promo__photo-img" src={promoPhoto} alt="Artem Sokur"/>
-            </div>
-            {/* <TransitionGroup className="promo animated" id="promo">
-                {showContent && (
-                    <>
-                        <div className="promo__content">
-                            <CSSTransition timeout={1000} classNames="fade" in={showContent} appear>
-                                <h1 className="promo__content-title">Hi, I'm Artem Sokur</h1>
-                            </CSSTransition>
-
-                            <CSSTransition timeout={1500} classNames="slide" in={showContent} appear>
-                                <div className="wrapper-subtitle">
-                                    <span className="promo__content-subtitle">Frontend Developer</span>
-                                </div>
-                            </CSSTransition>
-
-                            <CSSTransition timeout={2000} classNames="slide" in={showContent} appear>
-                                <div className="divider"></div>
-                            </CSSTransition>
-
-                            <CSSTransition timeout={2500} classNames="fade" in={showContent} appear>
-                                <p className="promo__content-description">
-                                    I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.
-                                </p>
-                            </CSSTransition>
-
-                            <CSSTransition timeout={3000} classNames="slide" in={showContent} appear>
-                                <button className="promo__content--button">Download CV</button>
-                            </CSSTransition>
-                        </div>
-                        <div className="promo__photo">
-                            <span className="promo__photo-circle"></span>
-                            <img className="promo__photo-img" src={promoPhoto} alt="Artem Sokur"/>
-                        </div>
-                    </>
-                )}
-            </TransitionGroup> */}
+            </CSSTransition>
         </section>
     );
 }
