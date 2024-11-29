@@ -4,13 +4,6 @@
     align-items: center;
     &__photo {
         position: relative;
-        &.zoomIn {
-            &-enter {
-                &-active, &-done {
-                    transition-delay: 1s;
-                }
-            }
-        }
         &-img {
             width: 30vw;
             background-color: white;
@@ -51,23 +44,7 @@
                 height: 1.5em;
             }
         }
-        .wrapper-subtitle {
-            &.slideRight {
-                &-enter {
-                    &-active, &-done {
-                        transition-delay: .5s;
-                    }
-                }
-            }
-        }
         &-subtitle {
-            &.slideRight {
-                &-enter {
-                    &-active, &-done {
-                        transition-delay: .5s;
-                    }
-                }
-            }
             position: relative;
             font-size: 3.2rem;
             font-weight: 700;
@@ -94,13 +71,6 @@
             }
         }
         &-description {
-            &.slideLeft {
-                &-enter {
-                    &-active, &-done {
-                        transition-delay: .5s;
-                    }
-                }
-            }
             font-size: 1.6rem;
             margin: 2rem 0 4rem;
         }
@@ -122,10 +92,74 @@
             z-index: 1;
             overflow: hidden;
             box-shadow: 0 0 1rem $main-color;
-            transition: .5s box-shadow, .5s color, .5s background-color, .5s border;
-            will-change: color, background-color, box-shadow, border;
             &:hover {
+                animation: diodButtonIn .5s;
                 box-shadow: none;
+            }
+            &:not(:hover) {
+                animation: diodButtonOut .5s;
+            }
+        }
+    }
+    .animated-enter & {
+        &__photo {
+            @include disappear;
+            transform: scale(0);
+        }
+        &__content {
+            &-title {
+                transform: translateY(-10rem);
+                @include disappear;
+            }
+            .wrapper-subtitle {
+                transform: translateX(-10rem);
+                @include disappear;
+            }
+            .divider {
+                transform: translateY(10rem);
+                @include disappear;
+            }
+            &-description {
+                transform: translateX(10rem);
+                @include disappear;
+            }
+            &--button {
+                transform: translateY(10rem);
+                @include disappear;
+            }
+        }
+    }
+    .animated-enter-active, .animated-enter-done & {
+        &__photo {
+            @include appear;
+            transform: scale(1);
+            transition: all 1s 1s;
+        }
+        &__content {
+            &-title {
+                transform: translateY(0);
+                @include appear;
+                transition: all 1s;
+            }
+            .wrapper-subtitle {
+                transform: translateX(0);
+                @include appear;
+                transition: all 1s .5s;
+            }
+            .divider {
+                transform: translateY(0);
+                @include appear;
+                transition: all 1s;
+            }
+            &-description {
+                transform: translateX(0);
+                @include appear;
+                transition: all 1s .5s;
+            }
+            &--button {
+                transform: translateY(0);
+                @include appear;
+                transition: all 1s 1s;
             }
         }
     }

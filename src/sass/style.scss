@@ -42,8 +42,9 @@ section {
     height: .3rem;
     background-color: $main-color;
     margin: 2.5rem auto 0 auto;
-    // transition: .5s background-color;
+    transition: .5s background-color;
     // opacity: 0;
+    // visibility: hidden;
 }
 
 .animated {
