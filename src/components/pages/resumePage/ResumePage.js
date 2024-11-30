@@ -1,19 +1,36 @@
+import { CSSTransition } from 'react-transition-group';
+import { useState, useEffect } from 'react';
+
 import mainPhoto from '../../../assets/img/main-photo.jpg';
 import university from '../../../assets/icons/experience/university.svg';
 import courses from '../../../assets/icons/experience/courses.svg';
 import developer from '../../../assets/icons/experience/developer.svg';
 
 const ResumePage = () => {
-    return (
-        <section className="resume" id="resume">
-            <h2 className="resume-title">Resume</h2>
-            <div className="resume-subtitle">Here's how I'll be helpful for you</div>
-            <div className="divider"></div>
+    const [showContent, setShowContent] = useState(false);
 
-            <div className="resume__wrapper">
-                <div className="resume__photo">
-                    <img src={mainPhoto} alt="mainPhoto"/>
-                </div>
+    useEffect(() => {
+        setShowContent(true);
+    }, []);
+
+    return (
+        <>
+            <CSSTransition
+                in={showContent}
+                timeout={1000}
+                classNames="animated"
+                mountOnEnter
+                unmountOnExit
+                >
+            <section className="resume" id="resume">
+                <h2 className="resume-title">Resume</h2>
+                <div className="resume-subtitle">Here's how I'll be helpful for you</div>
+                <div className="resume__divider divider"></div>
+
+                <div className="resume__wrapper">
+                    <div className="resume__photo">
+                        <img src={mainPhoto} alt="mainPhoto"/>
+                    </div>
 
                     <div className="resume__column">
                         <h3 className="resume__column-title">Experience</h3>
@@ -62,8 +79,10 @@ const ResumePage = () => {
                             </li>
                         </ul>
                     </div>
-            </div>
-        </section>
+                </div>
+            </section>
+            </CSSTransition>
+        </>
     );
 }
 

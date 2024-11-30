@@ -38,33 +38,11 @@ section {
 }
 
 .divider {
-    width: 6rem;
-    height: .3rem;
-    background-color: $main-color;
-    margin: 2.5rem auto 0 auto;
-    transition: .5s background-color;
-    // opacity: 0;
-    // visibility: hidden;
-}
-
-.animated {
-    .divider {
-        animation: slideTop .5s ease forwards;
-    }
-}
-
-.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-.show {
-    opacity: 1;
-    visibility: visible;
+    @include divider;
 }
 
 // @import 'blocks/modal';
 
-// @import 'blocks/works';
 @import '../components/navigationMenu/navigationMenu';
 @import '../components/pages/promoPage/promoPage';
 @import '../components/pages/resumePage/resumePage';

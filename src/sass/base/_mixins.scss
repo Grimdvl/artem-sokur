@@ -13,11 +13,17 @@
     }
 }
 
+@mixin divider {
+    width: 6rem;
+    height: .3rem;
+    background-color: $main-color;
+    margin: 2.5rem auto 0 auto;
+}
+
 @mixin disappear {
     opacity: 0;
     visibility: hidden;
 }
-
 @mixin appear {
     opacity: 1;
     visibility: visible;

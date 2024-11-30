@@ -1,6 +1,5 @@
 .resume {
     &-title {
-        opacity: 0;
         position: relative;
         text-align: center;
         font-weight: 700;
@@ -16,7 +15,6 @@
         }
     }
     &-subtitle {
-        opacity: 0;
         font-size: 1.6rem;
         line-height: 2.4rem;
         text-align: center;
@@ -38,7 +36,6 @@
         align-items: center;
         overflow: hidden;
         z-index: 1;
-        opacity: 0;
         &::before {
             content: '';
             position: absolute;
@@ -57,12 +54,6 @@
             object-fit: cover;
             inset: 0 .5px;
             border-radius: 1.6rem;
-        }
-    }
-    &__descr {
-        padding-top: .6rem;
-        .divider {
-            margin: 0;
         }
     }
     &__column {
@@ -152,15 +143,22 @@
             }
         }
     }
-    .animated & {
+    .animated-enter & {
         &-title {
-            animation: slideBottom 1s ease forwards;
+            transform: translateY(-10rem);
+            @include disappear;
         }
         &-subtitle {
-            animation: slideRight 1s .5s ease forwards;
+            transform: translateX(-10rem);
+            @include disappear;
+        }
+        &__divider {
+            transform: translateY(10rem);
+            @include disappear;
         }
         &__photo {
-            animation: slideRight 1s .5s ease forwards;
+            transform: translateX(-10rem);
+            @include disappear;
         }
         &__column {
             &-title { 
@@ -194,28 +192,62 @@
                         animation: resumeOpacity .5s 2s linear forwards;
                     }
                 }
-                // li:nth-child(1) {
-                //     &:after {
-                //         animation-delay: .5s;
-                //     }
-                //     &::before {
-                //         animation-delay: .4s;
-                //     }
-                //     .resume__item {
-                //         animation-delay: .9s;
-                //     }
-                // }
-                // li:nth-child(2) {
-                //     &:after {
-                //         animation-delay: .9s;
-                //     }
-                //     &::before {
-                //         animation-delay: 1.4s;
-                //     }
-                //     .resume__item {
-                //         animation-delay: 1.9s;
-                //     }
-                // }
+            }
+        }
+    }
+    .animated-enter-active, .animated-enter-done & {
+        &-title {
+            transform: translateY(0);
+            @include appear;
+            transition: all 1s;
+        }
+        &-subtitle {
+            transform: translateX(0);
+            @include appear;
+            transition: all 1s .5s;
+        }
+        &__divider {
+            transform: translateY(0);
+            @include appear;
+            transition: all 1s;
+        }
+        &__photo {
+            transform: translateX(0);
+            @include appear;
+            transition: all 1s 1s;
+        }
+        &__column {
+            &-title { 
+                animation: resumeTitle 1s .5s linear forwards;
+            }
+            ul {
+                &:before {
+                    animation: resumeAfter 1.5s .5s linear forwards;
+                }
+                li:nth-child(1) {
+                    &:before {
+                        animation: resumeBefore .5s .7s linear forwards;
+                    }
+                    .resume__item {
+                        animation: resumeOpacity .5s 1s linear forwards;
+                    }
+                }
+                li:nth-child(2) {
+                    &:before {
+                        animation: resumeBefore .5s 1.2s linear forwards;
+                    }
+                    .resume__item {
+                        animation: resumeOpacity .5s 1.5s linear forwards;
+                    }
+                }
+                li:nth-child(3) {
+                    &:before {
+                        animation: resumeBefore .5s 1.7s linear forwards;
+                    }
+                    .resume__item {
+                        animation: resumeOpacity .5s 2s linear forwards;
+                    }
+                }
             }
         }
     }
