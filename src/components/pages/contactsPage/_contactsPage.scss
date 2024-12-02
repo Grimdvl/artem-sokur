@@ -28,12 +28,14 @@
         }
     }
     &__contact {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-top: 2rem;
-        span {
-            color: $main-color;
-            transition: 1s color;
+        &-subtitle {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            span {
+                color: $main-color;
+                transition: 1s color;
+            }
         }
     }
     &__text {

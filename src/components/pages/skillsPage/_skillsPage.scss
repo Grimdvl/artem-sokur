@@ -14,7 +14,6 @@
         padding: 0 1rem;
     }
     &-title {
-        opacity: 0;
         position: relative;
         text-align: center;
         font-weight: 700;
@@ -30,7 +29,6 @@
         }
     }
     &-subtitle {
-        opacity: 0;
         font-size: 1.6rem;
         line-height: 2.4rem;
         text-align: center;
@@ -252,14 +250,6 @@
                 width: 0;
                 transition: 1s background-color;
             }
-        }
-    }
-    .animated & {
-        &-title {
-            animation: slideBottom 1s ease forwards;
-        }
-        &-subtitle {
-            animation: slideRight 1s .5s ease forwards;
         }
     }
 }

@@ -21,12 +21,12 @@ const PromoPage = () => {
                 >
                 <section className="promo" id="promo">
                     <div className="promo__content">
-                        <h1 className="promo__content-title">Hi, I'm Artem Sokur</h1>
-                        <div className="wrapper-subtitle">
+                        <h1 className="promo__content-title title">Hi, I'm Artem Sokur</h1>
+                        <div className="wrapper-subtitle subtitle">
                             <span className="promo__content-subtitle">Frontend Developer</span>
                         </div>
-                        <div className="divider"></div>
-                        <p className="promo__content-description">I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.</p>
+                        <div className="promo__content-divider divider"></div>
+                        <p className="promo__content-description description">I'm a novice in web development with experience in creating websites and landing pages. Ready to transform your vision into functional and appealing web solutions. My goal is to turn your ideas into reality and craft high-quality online projects that meet your requirements.</p>
                         <button className="promo__content--button">Download CV</button>
                     </div>
                     <div className="promo__photo">

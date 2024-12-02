@@ -1,3 +1,45 @@
+.animated-enter {
+    .title {
+        transform: translateY(-10rem);
+        @include disappear;
+    }
+    .subtitle {
+        transform: translateX(-10rem);
+        @include disappear;
+    }
+    .divider {
+        transform: translateY(10rem);
+        @include disappear;
+    }
+    .description {
+        transform: translateX(10rem);
+        @include disappear;
+    }
+}
+
+.animated-enter-active, .animated-enter-done {
+    .title {
+        transform: translateY(0);
+        @include appear;
+        transition: all 1s;
+    }
+    .subtitle {
+        transform: translateX(0);
+        @include appear;
+        transition: all 1s .5s;
+    }
+    .divider {
+        transform: translateY(0);
+        @include appear;
+        transition: all 1s;
+    }
+    .description {
+        transform: translateX(0);
+        @include appear;
+        transition: all 1s .5s;
+    }
+}
+
 @keyframes floatPhoto {
     0% {
         transform: translateY(0);

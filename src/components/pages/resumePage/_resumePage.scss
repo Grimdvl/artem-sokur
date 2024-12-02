@@ -144,18 +144,6 @@
         }
     }
     .animated-enter & {
-        &-title {
-            transform: translateY(-10rem);
-            @include disappear;
-        }
-        &-subtitle {
-            transform: translateX(-10rem);
-            @include disappear;
-        }
-        &__divider {
-            transform: translateY(10rem);
-            @include disappear;
-        }
         &__photo {
             transform: translateX(-10rem);
             @include disappear;
@@ -196,25 +184,10 @@
         }
     }
     .animated-enter-active, .animated-enter-done & {
-        &-title {
-            transform: translateY(0);
-            @include appear;
-            transition: all 1s;
-        }
-        &-subtitle {
-            transform: translateX(0);
-            @include appear;
-            transition: all 1s .5s;
-        }
-        &__divider {
-            transform: translateY(0);
-            @include appear;
-            transition: all 1s;
-        }
         &__photo {
             transform: translateX(0);
             @include appear;
-            transition: all 1s 1s;
+            transition: all 1s 0s;
         }
         &__column {
             &-title { 
