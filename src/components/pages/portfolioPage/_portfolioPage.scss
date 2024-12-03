@@ -24,11 +24,11 @@
         line-height: 2.4rem;
         text-align: center;
     }
-    &__wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+    // &-head {
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: center;
+    // }
     &__items {
         transition: transform .5s ease;
         display: flex;

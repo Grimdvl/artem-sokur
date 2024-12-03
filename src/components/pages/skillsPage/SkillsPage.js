@@ -43,10 +43,27 @@ function loadingSkillsCards(rate, count) {
 const SkillsPage = () => {
     const [showContent, setShowContent] = useState(false);
 
+    // useEffect(() => {
+    //     setShowContent(true);
+    //     setTimeout(() => {
+    //         console.log(document.querySelector('.skills .skills__wrapper')); // Должен быть не null
+    //         cards();
+    //     }, 0);
+    // }, []);
+    // useEffect(() => {
+    //     setShowContent(true);
+    //     const timer = setTimeout(() => {
+    //         cards(); // Запускаем после монтирования компонента
+    //     }, 0);
+    
+    //     return () => clearTimeout(timer); // Очистка таймера
+    // }, []);
     useEffect(() => {
-        setShowContent(true);
-        cards();
-    }, []);
+        // if (document.querySelector('.skills .skills__wrapper')) {
+            setShowContent(true);
+            cards();
+        // }
+    }, [showContent]);
 
     function cards() {
         const skillsData = [
@@ -206,11 +223,11 @@ const SkillsPage = () => {
             unmountOnExit
             >
             <section className="skills" id="skills">
-                {/* <div className="wrapper"> */}
+                <div className="skills-head">
                     <h2 className="skills-title title">Skills</h2>
                     <div className="skills-subtitle subtitle">The tools that I use</div>
                     <div className="skills-divider divider"></div>
-                {/* </div> */}
+                </div>
                 <div className="skills__wrapper">
                     {/* <div className="skills__card">
                         <div className="skills__card-front">

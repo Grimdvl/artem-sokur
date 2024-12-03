@@ -1,13 +1,29 @@
 import { CSSTransition } from 'react-transition-group';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Typed from 'typed.js';
 
 const ContactsPage = () => {
     const [showContent, setShowContent] = useState(false);
+    const typedElement = useRef(null)
 
     useEffect(() => {
         setShowContent(true);
-    }, []);
-    
+
+        if (typedElement.current) {
+            const typed = new Typed(typedElement.current, {
+                strings: ['Facebook', 'Telegram', 'Instagram'],
+                typeSpeed: 100,
+                backSpeed: 100,
+                backDelay: 1000,
+                loop: true
+            });
+
+            return () => {
+                typed.destroy();
+            };
+        }
+    }, [showContent]);
+
     return (
         <>
         <CSSTransition
@@ -19,9 +35,11 @@ const ContactsPage = () => {
             >
             <section className="contacts" id="contacts">
                 <div className="contacts__descr">
-                    <h2 className="contacts__descr-title title">Contacts</h2>
-                    <div className="contacts__contact-subtitle subtitle">Text me on <span className="multiple-text"></span></div>
-                    <div className="contacts__contact-divider divider"></div>
+                    <div className="contacts-head">
+                        <h2 className="contacts__descr-title title">Contacts</h2>
+                        <div className="contacts__contact-subtitle subtitle">Text me on <span ref={typedElement} className="multiple-text"></span></div>
+                        <div className="contacts__contact-divider divider"></div>
+                    </div>
                     
                     <div className="contacts__social">
                         <a href="https://www.facebook.com/profile.php?id=100079481086820" target="_blank" rel="noopener noreferrer" className="contacts__link">
