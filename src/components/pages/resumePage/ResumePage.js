@@ -1,37 +1,41 @@
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 import ResumeItems from './resumeItems/ResumeItems';
 import resumeData from './resumeItems/ResumeData';
 import mainPhoto from '../../../assets/img/main-photo.jpg';
 
 const ResumePage = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(-1);
     const [showContent, setShowContent] = useState(false);
+
+    const duration = 1000;
+    const totalDuration = resumeData.length * (duration / 1000);
 
     useEffect(() => {
         setShowContent(true);
-        const timer = setInterval(() => {
+
+        const itemTimer = setInterval(() => {
             setCurrentIndex((prevIndex) => {
                 if (prevIndex < resumeData.length - 1) {
                     return prevIndex + 1;
                 } else {
-                    clearInterval(timer);
+                    clearInterval(itemTimer);
                     return prevIndex;
                 }
             });
-        }, 3000);
+        }, duration);
 
-        return () => clearInterval(timer);
+        return () => clearInterval(itemTimer);
     }, []);
 
     return (
         <CSSTransition
             in={showContent}
             classNames="animated"
-            timeout={500 * resumeData.length}
+            timeout={duration}
             mountOnEnter
             unmountOnExit
-        >
+            >
             <section className="resume" id="resume">
                 <div className="resume__head">
                     <h2 className="resume__head-title title">Resume</h2>
@@ -41,32 +45,36 @@ const ResumePage = () => {
 
                 <div className="resume__wrapper">
                     <div className="resume__wrapper-photo">
-                        <img src={mainPhoto} alt="mainPhoto"/>
+                        <img src={mainPhoto} alt="mainPhoto" />
                     </div>
 
                     <div className="resume__wrapper-column">
                         <h3 className="column-title">Experience</h3>
-                        <CSSTransition in={showContent} timeout={500 * resumeData.length} classNames="ul-animation">
-                            <ul>
-                                <SwitchTransition mode="out-in">
-                                    <CSSTransition
-                                        key={currentIndex}
-                                        timeout={500}
-                                        classNames="li-animation"
+                        <ul 
+                            style={{ '--totalDuration': `${totalDuration}s` }}
+                            className='list'
+                            >
+                            {resumeData.map(({id, imgSrc, icon, company, role, description}, index) => (
+                                <CSSTransition
+                                    key={id}
+                                    in={index <= currentIndex}
+                                    timeout={duration}
+                                    className={`list__item ${
+                                        index <= currentIndex ? 'animated' : ''
+                                    }`}
                                     >
-                                        <li key={resumeData[currentIndex].id}>
-                                            <ResumeItems 
-                                                imgSrc={resumeData[currentIndex].imgSrc}
-                                                icon={resumeData[currentIndex].icon}
-                                                company={resumeData[currentIndex].company}
-                                                role={resumeData[currentIndex].role}
-                                                description={resumeData[currentIndex].description}
-                                            />
-                                        </li>
-                                    </CSSTransition>
-                                </SwitchTransition>
-                            </ul>
-                        </CSSTransition>
+                                    <li>
+                                        <ResumeItems
+                                            imgSrc={imgSrc}
+                                            icon={icon}
+                                            company={company}
+                                            role={role}
+                                            description={description}
+                                        />
+                                    </li>
+                                </CSSTransition>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>

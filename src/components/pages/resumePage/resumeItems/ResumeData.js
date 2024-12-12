@@ -27,6 +27,14 @@ const resumeData = [
         role: "Front-End | WordPress layout - 'development'",
         description: "Developing landing pages and e-commerce websites. I specialize in creating bespoke websites and handling WordPress layout development. My aim is to create stylish and user-friendly web pages. Ready to assist in enhancing your business's online presence.",
     }
+    // {
+    //     id: 4,
+    //     company: "Freelancing",
+    //     imgSrc: developer,
+    //     icon: 'developer',
+    //     role: "Front-End | WordPress layout - 'development'",
+    //     description: "Developing landing pages and e-commerce websites. I specialize in creating bespoke websites and handling WordPress layout development. My aim is to create stylish and user-friendly web pages. Ready to assist in enhancing your business's online presence.",
+    // }
 ];
 
 export default resumeData;
