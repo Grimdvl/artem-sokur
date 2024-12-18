@@ -37,20 +37,28 @@
         position: relative;
         transform-style: preserve-3d;
         will-change: transform;
-        &-front {
-            transform: rotateY(180deg);
-            will-change: transform;
-            &.active {
-                transform: rotateY(0);
+        .active & {
+            &-front {
+                transform: perspective(50rem) rotateY(180deg);
+            }
+            &-back {
+                transform: perspective(50rem) rotateY(360deg);
             }
         }
-        &-back {
-            transform: rotateY(180deg);
-            will-change: transform;
-            &.active {
-                transform: rotateY(360deg);
-            }
-        }
+        // &-front {
+        //     transform: rotateY(180deg);
+        //     will-change: transform;
+        //     &.active {
+        //         transform: rotateY(180deg);
+        //     }
+        // }
+        // &-back {
+        //     transform: rotateY(180deg);
+        //     will-change: transform;
+        //     &.active {
+        //         transform: rotateY(180deg);
+        //     }
+        // }
         &-front, &-back {
             display: flex;
             justify-content: space-between;
@@ -72,7 +80,7 @@
             padding: 2rem 3rem;
             overflow: hidden;
             transition: 1s box-shadow, 1s border, 1s background-color, 1s transform;
-            &-button {
+            &--button {
                 position: relative;
                 z-index: 1;
                 display: inline-block;
@@ -144,12 +152,14 @@
                     top: 0;
                     left: 50%;
                     transform-origin: 50% 7rem;
-                    opacity: 0;
-                    animation: loadingCircle 0.1s linear forwards;
+                    will-change: transform;
+                    @include disappear;
+                    animation: in 0.1s linear forwards;
                 }
                 .block.active {
                     background-color: $main-color;
                     box-shadow: 0 0 1rem $main-color, 0 0 2rem $main-color;
+                    will-change: background-color, box-shadow;
                 }
                 h3 {
                     position: absolute;
@@ -171,7 +181,6 @@
                     ion-icon {
                         color: $main-color;
                         font-size: 7rem;
-                        transition: 1s color;
                     }
                 }
             }

@@ -135,13 +135,6 @@
     }
 }
 
-@keyframes loadingCircle {
-    to {
-        visibility: visible;
-        opacity: 1;
-    }
-}
-
 @keyframes resumeAfter {
     0% {
         height: 0;
@@ -162,34 +155,10 @@
 
 @keyframes in {
     0% {
-        opacity: 0;
-        visibility: hidden;
+        @include disappear;
     }
     100% {
-        opacity: 1;
-        visibility: visible;
-    }
-}
-
-@keyframes resumeOpacity {
-    0% {
-        visibility: hidden;
-        opacity: 0;
-    }
-    100% {
-        visibility: visible;
-        opacity: 1;
-    }
-}
-
-@keyframes resumeTitle {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
+        @include appear;
     }
 }
 

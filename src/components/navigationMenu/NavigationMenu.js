@@ -1,5 +1,5 @@
-import { loadingSkillsCards } from "../pages/skillsPage/SkillsPage";
-import skills from "../pages/skillsPage/skillsRatings/SkillsRatings";
+// import { loadingSkillsCards } from "../pages/skillsPage/SkillsPage";
+// import skills from "../pages/skillsPage/skillsRatings/SkillsRatings";
 
 const NavigationMenu = () => {
     // import {loadingSkillsCards} from './cards';
@@ -52,8 +52,8 @@ const NavigationMenu = () => {
                         sectionsMap[section.id].classList.add('animated');
                         if (sectionsMap.skills.classList.contains('animated') && !isSkillsCardsLoaded) {
                             isSkillsCardsLoaded = true;
-                            loadingSkillsCards('.skills__card-front-icon', '.counter');
-                            skills('.skills__ratings-counter', '.skills__ratings-line span');
+                            // loadingSkillsCards('.skills__card-front-icon', '.counter');
+                            // skills('.skills__ratings-counter', '.skills__ratings-line span');
                         }
                         if (!sectionsMap.skills.classList.contains('animated') && isSkillsCardsLoaded) {
                             isSkillsCardsLoaded = false;

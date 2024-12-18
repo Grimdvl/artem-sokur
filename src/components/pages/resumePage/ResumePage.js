@@ -49,12 +49,12 @@ const ResumePage = () => {
                     </div>
 
                     <div className="resume__wrapper-column">
-                        <h3 className="column-title">Experience</h3>
+                        <h3 className="column-title description">Experience</h3>
                         <ul 
                             style={{ '--totalDuration': `${totalDuration}s` }}
                             className='list'
                             >
-                            {resumeData.map(({id, imgSrc, icon, company, role, description}, index) => (
+                            {resumeData.map(({id, src, alt, company, role, description}, index) => (
                                 <CSSTransition
                                     key={id}
                                     in={index <= currentIndex}
@@ -65,8 +65,8 @@ const ResumePage = () => {
                                     >
                                     <li>
                                         <ResumeItems
-                                            imgSrc={imgSrc}
-                                            icon={icon}
+                                            src={src}
+                                            alt={alt}
                                             company={company}
                                             role={role}
                                             description={description}
