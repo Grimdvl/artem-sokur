@@ -1,13 +1,19 @@
-const CardsItems = ({ src, alt, title, descr, progress, blocks, handleFlip, className }) => {
-    return (
-        <div className={className}>
-            <div className="skills__card-front">
-                <div class="skills__card-front-icon">
-                    <h3>
-                        <ion-icon name={src} alt={alt}></ion-icon>
-                        <div className="counter">{progress}<sup>%</sup></div>
-                    </h3>
-                    {blocks.map((block, index) => (
+import React, { forwardRef } from 'react';
+
+const CardsItems = forwardRef(
+    ({ src, alt, title, description, progress, blocks, handleFlip, className, onMouseMove }, ref) => {
+        return (
+            <div className={className}
+            ref={ref}
+            onMouseMove={onMouseMove}
+            >
+                <div className="skills__card-front">
+                    <div className="skills__card-front-icon">
+                        <h3>
+                            <ion-icon name={src} alt={alt}></ion-icon>
+                            <div className="counter">{progress}<sup>%</sup></div>
+                        </h3>
+                        {blocks.map((block, index) => (
                             <div
                                 key={index}
                                 className={`block${block.isActive ? ' active' : ''}`}
@@ -17,25 +23,30 @@ const CardsItems = ({ src, alt, title, descr, progress, blocks, handleFlip, clas
                                 }}
                             ></div>
                         ))}
-                </div>
-                <button
+                    </div>
+                    <button
                         type="button"
                         className="skills__card-front--button"
                         onClick={handleFlip}
-                        >Read more</button>
-            </div>
+                    >
+                        Read more
+                    </button>
+                </div>
 
-            <div className="skills__card-back">
-                <h3 className="skills__card-back-title">{title}</h3>
-                <p className="skills__card-back-description">{descr}</p>
-                <button
-                    type="button"
-                    className="skills__card-back--button"
-                    onClick={handleFlip}
-                    >Back</button>
+                <div className="skills__card-back">
+                    <h3 className="skills__card-back-title">{title}</h3>
+                    <p className="skills__card-back-description">{description}</p>
+                    <button
+                        type="button"
+                        className="skills__card-back--button"
+                        onClick={handleFlip}
+                    >
+                        Back
+                    </button>
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+);
 
 export default CardsItems;

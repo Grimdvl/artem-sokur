@@ -10,8 +10,6 @@ const SkillsPage = () => {
         setShowContent(true);
     }, []);
 
-
-
         // function initializeVanillaTilt(cards) {
         //     VanillaTilt.init(document.querySelectorAll(cards), {
         //         max: 10,
@@ -108,7 +106,6 @@ const SkillsPage = () => {
         //             </div>
         //         `;
         //         this.parent.append(element);
-
         //         initializeVanillaTilt(`.${this.classes}`);
         //         initializeBlureEffect(`.${this.classes}`);
         //     }
@@ -117,7 +114,6 @@ const SkillsPage = () => {
         // skillsData.forEach(({ src, alt, title, descr, target }) => {
         //     new SkillsCards(src, alt, title, descr, target, '.skills .skills__wrapper').render();
         // });
-
         // flippingCard('.skills__card-front-button', '.skills__card-back-button', '.skills__card-front', '.skills__card-back');
     
 
