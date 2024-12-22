@@ -1,25 +1,60 @@
-function skills(counterSelector, lineSelector) {
-    const counters = document.querySelectorAll(counterSelector),
-          lines = document.querySelectorAll(lineSelector);
+import { useState, useEffect } from "react";
+import ratingsData from "./RatingsData";
+import RatingsItems from "./RatingsItems";
 
-    function numberCounter(counter, target, index) {
-        const value = +counter.innerText.replace(/\D/g, '');
+const SkillsRatings = () => {
+    const [progresses, setProgresses] = useState(
+        ratingsData.map(() => ({ value: 0, width: 0 }))
+    );
 
-        if (value < target) {
-            counter.innerHTML = `${Math.ceil(value + 1)}<sup>%</sup>`;
-            const progress = (value + 1) / 100 * 100;
-            lines[index].style.width = `${progress}%`;
-            setTimeout(() => {
-                numberCounter(counter, target, index);
+    useEffect(() => {
+        const intervalIds = [];
+
+        ratingsData.forEach((rating, index) => {
+            const incrementProgress = () => {
+                setProgresses((prev) =>
+                    prev.map((progress, i) =>
+                        i === index && progress.value < rating.target
+                            ? {
+                                value: progress.value + 1,
+                                width: ((progress.value + 1) / rating.target) * 100,
+                            }
+                            : progress
+                    )
+                );
+            };
+
+            const intervalId = setInterval(() => {
+                setProgresses((prev) => {
+                    if (prev[index].value >= rating.target) {
+                        clearInterval(intervalId);
+                        return prev;
+                    }
+                    incrementProgress();
+                    return prev;
+                });
             }, 15);
-        }
-    }
 
-    counters.forEach((counter, i) => {
-        counter.innerHTML = `0<sup>%</sup>`;
-        const target = +counter.getAttribute('value');
-        numberCounter(counter, target, i);
-    });
-}
+            intervalIds.push(intervalId);
+        });
 
-export default skills;
+        return () => {
+            intervalIds.forEach(clearInterval);
+        };
+    }, []);
+
+    return (
+        <div className="skills__ratings">
+            {ratingsData.map(({ id, title, target }, index) => (
+                <RatingsItems
+                    key={id}
+                    title={title}
+                    target={target}
+                    progress={progresses[index]}
+                />
+            ))}
+        </div>
+    );
+};
+
+export default SkillsRatings;

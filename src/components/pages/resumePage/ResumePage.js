@@ -2,7 +2,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 import ResumeItems from './resumeItems/ResumeItems';
 import resumeData from './resumeItems/ResumeData';
-import mainPhoto from '../../../assets/img/main-photo.jpg';
+import mainPhoto from '../../../assets/img/photo/main-photo.jpg';
 
 const ResumePage = () => {
     const [currentIndex, setCurrentIndex] = useState(-1);

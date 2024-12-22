@@ -1,7 +1,7 @@
 import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 
-import promoPhoto from '../../../assets/img/promo-photo.png';
+import promoPhoto from '../../../assets/img/photo/promo-photo.png';
 
 const PromoPage = () => {
     const [showContent, setShowContent] = useState(false);
