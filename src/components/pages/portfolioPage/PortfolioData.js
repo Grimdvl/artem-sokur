@@ -1,6 +1,6 @@
 const portfolioData = [
     // {
-    //     id: 1,
+    //     id: 0,
     //     src: require("../../../assets/img/projects/Katherine.jpg"),
     //     alt: "Katherine-project",
     //     title: "Katherine Chafer",
@@ -107,24 +107,33 @@ const portfolioData = [
         linkGit: "https://github.com/Grimdvl/coffee",
         link: "https://grimdvl.github.io/coffee/"
     },
-    // {
-    //     id: 12,
-    //     src: require("../../../assets/img/projects/childhood.jpg"),
-    //     alt: "childhood-project",
-    //     title: "Childhood",
-    //     description: "Childhood...",
-    //     linkGit: "https://github.com/Grimdvl/childhood",
-    //     link: "https://grimdvl.github.io/childhood/"
-    // },
-    // {
-    //     id: 13,
-    //     src: require("../../../assets/img/projects/ts.jpg"),
-    //     alt: "ts-project",
-    //     title: "TS",
-    //     description: "TS...",
-    //     linkGit: "https://github.com/Grimdvl/TS",
-    //     link: "https://grimdvl.github.io/TS/"
-    // },
+    {
+        id: 12,
+        // src: require("../../../assets/img/projects/childhood.jpg"),
+        alt: "childhood-project",
+        title: "Childhood",
+        description: "Childhood...",
+        linkGit: "https://github.com/Grimdvl/childhood",
+        link: "https://grimdvl.github.io/childhood/"
+    },
+    {
+        id: 13,
+        // src: require("../../../assets/img/projects/ts.jpg"),
+        alt: "ts-project",
+        title: "TS",
+        description: "TS...",
+        linkGit: "https://github.com/Grimdvl/TS",
+        link: "https://grimdvl.github.io/TS/"
+    },
+    {
+        id: 14,
+        // src: require("../../../assets/img/projects/ts.jpg"),
+        alt: "ts-project",
+        title: "TS",
+        description: "TS...",
+        linkGit: "https://github.com/Grimdvl/TS",
+        link: "https://grimdvl.github.io/TS/"
+    },
 ];
 
 export default portfolioData;

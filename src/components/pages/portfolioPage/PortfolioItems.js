@@ -1,6 +1,10 @@
-const PortfolioItems = ({ id, src, alt, title, description, linkGit, link }) => {
+const PortfolioItems = ({ id, src, alt, title, description, linkGit, link, isActive, isHidden, onClick }) => {
     return (
-        <div className="portfolio__items-item" tabIndex="1" key={id}>
+        <div
+            className={`portfolio__items-item ${isActive ? 'active' : ''} ${isHidden ? 'hidden' : ''}`}
+            tabIndex="1"
+            onClick={onClick}
+        >
             <img className="img" src={src} alt={alt} />
             <div className="descr">
                 <h3 className="descr-title">{title}</h3>
