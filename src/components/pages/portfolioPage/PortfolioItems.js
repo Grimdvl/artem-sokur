@@ -1,7 +1,7 @@
-const PortfolioItems = ({ id, src, alt, title, description, linkGit, link, isActive, isHidden, onClick }) => {
+const PortfolioItems = ({ src, alt, title, description, linkGit, link, isActive, onClick }) => {
     return (
         <div
-            className={`portfolio__items-item ${isActive ? 'active' : ''} ${isHidden ? 'hidden' : ''}`}
+            className={`portfolio__items-item ${isActive ? 'active' : ''}`}
             tabIndex="1"
             onClick={onClick}
         >
