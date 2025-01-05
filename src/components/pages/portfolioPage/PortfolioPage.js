@@ -93,25 +93,30 @@ const PortfolioPage = () => {
             classNames="animated"
             mountOnEnter
             unmountOnExit
-        >
+            >
             <section className="portfolio" id="portfolio">
-                <div className="portfolio-head">
-                    <h2 className="portfolio-title title">Портфолио</h2>
-                    <div className="portfolio-subtitle subtitle">Мои работы</div>
-                    <div className="portfolio-divider divider"></div>
+                <div className="portfolio__head">
+                    <h2 className="portfolio__head-title title">Portfolio</h2>
+                    <div className="portfolio__head-subtitle subtitle">My works</div>
+                    <div className="portfolio__head-divider divider"></div>
                 </div>
 
-                <div className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'} ${parentActive ? 'active' : ''}`}
-                    ref={portfolioRef}>
-                    {portfolioData.slice(currentIndex, currentIndex + itemsToShow).map(({ id, src, alt, title, description, linkGit, link }, index) => (
-                        <CSSTransition
+                <div className={`portfolio__items ${isVertical 
+                    ? 'vertical' : 'horizontal'} ${parentActive 
+                    ? 'active' : ''}`}
+                    ref={portfolioRef}
+                    >
+                    {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
+                        const isVisible = index >= currentIndex && index < currentIndex + itemsToShow;
+                        return (
+                            <CSSTransition
                             key={id}
-                            in={showContent}
+                            in={isVisible}
                             timeout={0}
-                            classNames="animated"
+                            classNames='slide'
                             mountOnEnter
                             unmountOnExit
-                        >
+                            >
                             <PortfolioItems
                                 id={id}
                                 src={src}
@@ -120,11 +125,13 @@ const PortfolioPage = () => {
                                 description={description}
                                 linkGit={linkGit}
                                 link={link}
+                                isHidden={!isVisible}
                                 isActive={activeIndex === index}
                                 onClick={() => handleItemClick(index)}
-                            />
+                                />
                         </CSSTransition>
-                    ))}
+                        )
+                    })}
                 </div>
 
                 <div className="portfolio__slide">

@@ -40,6 +40,18 @@
     }
 }
 
+// .slide-enter, .slide-exit {
+//     @include disappear;
+// }
+
+// .slide-enter-active, .slide-enter-done {
+//     @include appear;
+// }
+
+// .slide-exit-active, .slide-exit-done {
+//     @include disappear;
+// }
+
 @keyframes floatPhoto {
     0% {
         transform: translateY(0);
@@ -161,6 +173,14 @@
         @include appear;
     }
 }
+@keyframes out {
+    0% {
+        @include appear;
+    }
+    100% {
+        @include disappear;
+    }
+}
 
 @keyframes contactsSpinner {
     100% {
@@ -228,4 +248,14 @@
     100% {
         background-image: linear-gradient($second-color, $second-color);
     }
+}
+
+.hidden {
+    @include disappear;
+    transition: all 1s;
+}
+
+.show {
+    @include appear;
+    transition: all 1s;
 }

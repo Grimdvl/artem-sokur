@@ -37,10 +37,6 @@ section {
     z-index: 1;
 }
 
-.hidden {
-    @include disappear;
-}
-
 .divider {
     @include divider;
 }

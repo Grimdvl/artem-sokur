@@ -4,31 +4,28 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    &-title {
-        position: relative;
-        text-align: center;
-        font-weight: 700;
-        font-size: 3.6rem;
-        line-height: 6rem;
-        @include before_circle;
-        &::before {
-            top: 0em;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1.5em;
-            height: 1.5em;
+    &__head {
+        &-title {
+            position: relative;
+            text-align: center;
+            font-weight: 700;
+            font-size: 3.6rem;
+            line-height: 6rem;
+            @include before_circle;
+            &::before {
+                top: 0em;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 1.5em;
+                height: 1.5em;
+            }
+        }
+        &-subtitle {
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            text-align: center;
         }
     }
-    &-subtitle {
-        font-size: 1.6rem;
-        line-height: 2.4rem;
-        text-align: center;
-    }
-    // &-head {
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: center;
-    // }
     &__items {
         transition: transform .5s ease;
         display: flex;
