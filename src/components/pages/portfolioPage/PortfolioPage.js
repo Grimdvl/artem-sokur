@@ -18,7 +18,6 @@ const PortfolioPage = () => {
 
     const itemsToShow = 10;
     const activeClass = 'active';
-    const mediaQuery = window.innerWidth <= 768;
 
     useEffect(() => {
         setShowContent(true);
@@ -54,7 +53,6 @@ const PortfolioPage = () => {
             }
         });
         portfolioRef.current.classList.remove(activeClass);
-        portfolioRef.current.parentNode.classList.remove(activeClass);
         portfolioRef.current.style.marginTop = '0';
         portfolioRef.current.style.marginBottom = '0';
     };
@@ -67,7 +65,7 @@ const PortfolioPage = () => {
         }
         portfolioRef.current.classList.add(activeClass);
 
-        if (mediaQuery) {
+        if (isVertical) {
             if (index === 0) {
                 portfolioRef.current.style.marginTop = '10vh';
                 portfolioRef.current.style.marginBottom = '0';
@@ -132,22 +130,19 @@ const PortfolioPage = () => {
                                 mountOnEnter
                                 unmountOnExit
                             >
-                                <div
+                                <PortfolioItems
+                                    id={id}
+                                    src={src}
+                                    alt={alt}
+                                    title={title}
+                                    description={description}
+                                    linkGit={linkGit}
+                                    link={link}
                                     ref={(el) => (itemsRef.current[index] = el)}
-                                >
-                                    <PortfolioItems
-                                        id={id}
-                                        src={src}
-                                        alt={alt}
-                                        title={title}
-                                        description={description}
-                                        linkGit={linkGit}
-                                        link={link}
-                                        isHidden={!isVisible}
-                                        isActive={activeIndex === index}
-                                        onClick={() => handleItemClick(index)}
-                                    />
-                                </div>
+                                    isHidden={!isVisible}
+                                    isActive={activeIndex === index}
+                                    onClick={() => handleItemClick(index)}
+                                />
                             </CSSTransition>
                         );
                     })}
