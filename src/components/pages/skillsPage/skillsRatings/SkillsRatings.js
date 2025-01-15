@@ -17,7 +17,7 @@ const SkillsRatings = () => {
                         i === index && progress.value < rating.target
                             ? {
                                 value: progress.value + 1,
-                                width: ((progress.value + 1) / rating.target) * 100,
+                                width: progress.value + 1,
                             }
                             : progress
                     )

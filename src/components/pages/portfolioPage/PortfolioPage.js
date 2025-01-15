@@ -14,8 +14,11 @@ const PortfolioPage = () => {
     const [parentActive, setParentActive] = useState(false);
 
     const portfolioRef = useRef(null);
+    const itemsRef = useRef([]);
 
     const itemsToShow = 10;
+    const activeClass = 'active';
+    const mediaQuery = window.innerWidth <= 768;
 
     useEffect(() => {
         setShowContent(true);
@@ -44,22 +47,44 @@ const PortfolioPage = () => {
         setIsEnd(currentIndex >= totalItems - itemsToShow);
     }, [currentIndex, itemsToShow]);
 
-    // const calculateSwipePosition = () => {
-    //     if (!portfolioRef.current) return 0;
+    const removeActiveClass = () => {
+        itemsRef.current.forEach((item) => {
+            if (item) {
+                item.classList.remove(activeClass);
+            }
+        });
+        portfolioRef.current.classList.remove(activeClass);
+        portfolioRef.current.parentNode.classList.remove(activeClass);
+        portfolioRef.current.style.marginTop = '0';
+        portfolioRef.current.style.marginBottom = '0';
+    };
 
-    //     const firstItem = portfolioRef.current.firstElementChild;
-    //     const gapSizeRem = 0.4;
-    //     const itemSizeRem =
-    //         isVertical
-    //             ? firstItem.offsetHeight / parseFloat(getComputedStyle(document.documentElement).fontSize)
-    //             : firstItem.offsetWidth / parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const addActiveClass = (index) => {
+        removeActiveClass();
+        const clickedItem = itemsRef.current[index];
+        if (clickedItem) {
+            clickedItem.classList.add(activeClass);
+        }
+        portfolioRef.current.classList.add(activeClass);
 
-    //     return itemSizeRem + gapSizeRem;
-    // };
+        if (mediaQuery) {
+            if (index === 0) {
+                portfolioRef.current.style.marginTop = '10vh';
+                portfolioRef.current.style.marginBottom = '0';
+            } else if (index === 1 || index === 2) {
+                portfolioRef.current.style.marginTop = '5vh';
+                portfolioRef.current.style.marginBottom = '0';
+            } else {
+                portfolioRef.current.style.marginTop = '0';
+                portfolioRef.current.style.marginBottom = '5vh';
+            }
+        }
+    };
 
     const handleItemClick = (index) => {
         setActiveIndex(index);
         setParentActive(true);
+        addActiveClass(index);
     };
 
     const handleNextSlide = () => {
@@ -75,17 +100,6 @@ const PortfolioPage = () => {
         }
     };
 
-    // const swipePositionRem = calculateSwipePosition();
-    // const transformValue = isVertical
-    //     ? `translateY(-${currentIndex * swipePositionRem}rem)`
-    //     : `translateX(-${currentIndex * swipePositionRem}rem)`;
-
-    // useEffect(() => {
-    //     if (portfolioRef.current) {
-    //         portfolioRef.current.style.transform = transformValue;
-    //     }
-    // }, [transformValue]);
-
     return (
         <CSSTransition
             in={showContent}
@@ -93,7 +107,7 @@ const PortfolioPage = () => {
             classNames="animated"
             mountOnEnter
             unmountOnExit
-            >
+        >
             <section className="portfolio" id="portfolio">
                 <div className="portfolio__head">
                     <h2 className="portfolio__head-title title">Portfolio</h2>
@@ -101,36 +115,41 @@ const PortfolioPage = () => {
                     <div className="portfolio__head-divider divider"></div>
                 </div>
 
-                <div className={`portfolio__items ${isVertical 
-                    ? 'vertical' : 'horizontal'} ${parentActive 
-                    ? 'active' : ''}`}
+                <div
+                    className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'} ${
+                        parentActive ? 'active' : ''
+                    }`}
                     ref={portfolioRef}
-                    >
+                >
                     {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
                         const isVisible = index >= currentIndex && index < currentIndex + itemsToShow;
                         return (
                             <CSSTransition
-                            key={id}
-                            in={isVisible}
-                            timeout={0}
-                            classNames='slide'
-                            mountOnEnter
-                            unmountOnExit
+                                key={id}
+                                in={isVisible}
+                                timeout={0}
+                                classNames="slide"
+                                mountOnEnter
+                                unmountOnExit
                             >
-                            <PortfolioItems
-                                id={id}
-                                src={src}
-                                alt={alt}
-                                title={title}
-                                description={description}
-                                linkGit={linkGit}
-                                link={link}
-                                isHidden={!isVisible}
-                                isActive={activeIndex === index}
-                                onClick={() => handleItemClick(index)}
-                                />
-                        </CSSTransition>
-                        )
+                                <div
+                                    ref={(el) => (itemsRef.current[index] = el)}
+                                >
+                                    <PortfolioItems
+                                        id={id}
+                                        src={src}
+                                        alt={alt}
+                                        title={title}
+                                        description={description}
+                                        linkGit={linkGit}
+                                        link={link}
+                                        isHidden={!isVisible}
+                                        isActive={activeIndex === index}
+                                        onClick={() => handleItemClick(index)}
+                                    />
+                                </div>
+                            </CSSTransition>
+                        );
                     })}
                 </div>
 
