@@ -22,9 +22,9 @@ const SkillsPage = () => {
             >
             <section className="skills" id="skills">
                 <div className="skills-head">
-                    <h2 className="skills-title title">Skills</h2>
-                    <div className="skills-subtitle subtitle">The tools that I use</div>
-                    <div className="skills-divider divider"></div>
+                    <h2 className="skills-title fade-in-down">Skills</h2>
+                    <div className="skills-subtitle fade-in-right">The tools that I use</div>
+                    <div className="skills-divider divider fade-in-up"></div>
                 </div>
                 <SkillsCards/>
                 <SkillsRatings/>

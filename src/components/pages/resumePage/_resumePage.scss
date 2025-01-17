@@ -140,10 +140,6 @@
     }
     .animated-enter & {
         &__wrapper {
-            &-photo {
-                transform: translateX(-10rem);
-                @include disappear;
-            }
             &-column {
                 &:before {
                     @include disappear;
@@ -160,10 +156,6 @@
     }
     .animated-enter-active, .animated-enter-done & {
         &__wrapper {
-            &-photo {
-                transform: translateX(0);
-                transition: all 1s;
-            }
             &-column {
                 &:before {
                     animation: in .5s forwards;

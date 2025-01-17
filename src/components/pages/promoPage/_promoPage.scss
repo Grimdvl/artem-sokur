@@ -101,30 +101,4 @@
             }
         }
     }
-    .animated-enter & {
-        &__photo {
-            @include disappear;
-            transform: scale(0);
-        }
-        &__content {
-            &--button {
-                transform: translateY(10rem);
-                @include disappear;
-            }
-        }
-    }
-    .animated-enter-active, .animated-enter-done & {
-        &__photo {
-            @include appear;
-            transform: scale(1);
-            transition: all 1s;
-        }
-        &__content {
-            &--button {
-                transform: translateY(0);
-                @include appear;
-                transition: all 1s;
-            }
-        }
-    }
 }

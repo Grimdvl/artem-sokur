@@ -36,12 +36,12 @@ const ContactsPage = () => {
             <section className="contacts" id="contacts">
                 <div className="contacts__descr">
                     <div className="contacts-head">
-                        <h2 className="contacts__descr-title title">Contacts</h2>
-                        <div className="contacts__contact-subtitle subtitle">Text me on <span ref={typedElement} className="multiple-text"></span></div>
-                        <div className="contacts__contact-divider divider"></div>
+                        <h2 className="contacts__descr-title fade-in-down">Contacts</h2>
+                        <div className="contacts__contact-subtitle fade-in-right">Text me on <span ref={typedElement} className="multiple-text"></span></div>
+                        <div className="contacts__contact-divider divider fade-in-up"></div>
                     </div>
                     
-                    <div className="contacts__social">
+                    <div className="contacts__social fade-in-left">
                         <a href="https://www.facebook.com/profile.php?id=100079481086820" target="_blank" rel="noopener noreferrer" className="contacts__link">
                             <i className='bx bxl-facebook'></i>
                         </a>
@@ -52,9 +52,9 @@ const ContactsPage = () => {
                             <i className='bx bxl-instagram-alt'></i>
                         </a>
                     </div>
-                    <div className="contacts__text">Or leave your contact information, and I will get in touch with you:</div>
+                    <div className="contacts__text fade-in">Or leave your contact information, and I will get in touch with you:</div>
 
-                    <form action="#" className="contacts__form">
+                    <form action="#" className="contacts__form fade-in">
                         <div className="contacts__input">
                             <input required name="name" id="name" type="text"/>
                             <label htmlFor="name">Your name</label>

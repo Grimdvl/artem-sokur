@@ -108,13 +108,13 @@ const PortfolioPage = () => {
         >
             <section className="portfolio" id="portfolio">
                 <div className="portfolio__head">
-                    <h2 className="portfolio__head-title title">Portfolio</h2>
-                    <div className="portfolio__head-subtitle subtitle">My works</div>
-                    <div className="portfolio__head-divider divider"></div>
+                    <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
+                    <div className="portfolio__head-subtitle fade-in-right">My works</div>
+                    <div className="portfolio__head-divider divider fade-in-up"></div>
                 </div>
 
                 <div
-                    className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'} ${
+                    className={`portfolio__items fade-in ${isVertical ? 'vertical' : 'horizontal'} ${
                         parentActive ? 'active' : ''
                     }`}
                     ref={portfolioRef}
@@ -148,7 +148,7 @@ const PortfolioPage = () => {
                     })}
                 </div>
 
-                <div className="portfolio__slide">
+                <div className="portfolio__slide fade-in">
                     <button
                         className={`portfolio__slide-prev ${isStart ? 'end' : ''}`}
                         onClick={handlePrevSlide}

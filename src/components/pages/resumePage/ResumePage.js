@@ -38,18 +38,18 @@ const ResumePage = () => {
             >
             <section className="resume" id="resume">
                 <div className="resume__head">
-                    <h2 className="resume__head-title title">Resume</h2>
-                    <div className="resume__head-subtitle subtitle">Here's how I'll be helpful for you</div>
-                    <div className="resume__head-divider divider"></div>
+                    <h2 className="resume__head-title fade-in-down">Resume</h2>
+                    <div className="resume__head-subtitle fade-in-right">Here's how I'll be helpful for you</div>
+                    <div className="resume__head-divider divider fade-in-up"></div>
                 </div>
 
                 <div className="resume__wrapper">
-                    <div className="resume__wrapper-photo">
+                    <div className="resume__wrapper-photo fade-in">
                         <img src={mainPhoto} alt="mainPhoto" />
                     </div>
 
                     <div className="resume__wrapper-column">
-                        <h3 className="column-title description">Experience</h3>
+                        <h3 className="column-title fade-in-left">Experience</h3>
                         <ul 
                             style={{ '--totalDuration': `${totalDuration}s` }}
                             className='list'

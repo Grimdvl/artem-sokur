@@ -1,42 +1,51 @@
 .animated-enter {
-    .title {
+    .fade-in-down {
         transform: translateY(-10rem);
         @include disappear;
     }
-    .subtitle {
+    .fade-in-right {
         transform: translateX(-10rem);
         @include disappear;
     }
-    .divider {
+    .fade-in-up {
         transform: translateY(10rem);
         @include disappear;
     }
-    .description {
+    .fade-in-left {
         transform: translateX(10rem);
         @include disappear;
+    }
+    .fade-in {
+        @include disappear;
+        transform: scale(0);
     }
 }
 
 .animated-enter-active, .animated-enter-done {
-    .title {
+    .fade-in-down {
         transform: translateY(0);
         @include appear;
-        transition: all 1s;
+        transition: transform 1s, visibility 1s, opacity 1s;
     }
-    .subtitle {
+    .fade-in-right {
         transform: translateX(0);
         @include appear;
-        transition: all 1s .5s;
+        transition: transform 1s .5s, visibility 1s .5s, opacity 1s .5s;
     }
-    .divider {
+    .fade-in-up {
         transform: translateY(0);
         @include appear;
-        transition: all 1s;
+        transition: transform 1s, visibility 1s, opacity 1s;
     }
-    .description {
+    .fade-in-left {
         transform: translateX(0);
         @include appear;
-        transition: all 1s .5s;
+        transition: transform 1s .5s, visibility 1s .5s, opacity 1s .5s;
+    }
+    .fade-in {
+        @include appear;
+        transform: scale(1);
+        transition: transform 1s 1s, visibility 1s 1s, opacity 1s 1s;
     }
 }
 

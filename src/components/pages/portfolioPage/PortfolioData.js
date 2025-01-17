@@ -73,7 +73,7 @@ const portfolioData = [
     },
     {
         id: 8,
-        src: require("../../../assets/img/projects/pokemons.jpg"),
+        src: require("../../../assets/img/projects/pokemons.png"),
         alt: "pokemons-project",
         title: "Pokemons",
         description: "A foundational frontend course from Master's Academy, a major Canadian IT company. In this course, I gained insights from product company developers who had 3-5 years of experience in development.",
@@ -112,28 +112,28 @@ const portfolioData = [
         // src: require("../../../assets/img/projects/childhood.jpg"),
         alt: "childhood-project",
         title: "Childhood",
-        description: "Childhood...",
+        description: "Soon...",
         linkGit: "https://github.com/Grimdvl/childhood",
         link: "https://grimdvl.github.io/childhood/"
     },
-    {
-        id: 13,
-        // src: require("../../../assets/img/projects/ts.jpg"),
-        alt: "ts-project",
-        title: "TS",
-        description: "TS...",
-        linkGit: "https://github.com/Grimdvl/TS",
-        link: "https://grimdvl.github.io/TS/"
-    },
-    {
-        id: 14,
-        // src: require("../../../assets/img/projects/ts.jpg"),
-        alt: "ts-project",
-        title: "TS",
-        description: "TS...",
-        linkGit: "https://github.com/Grimdvl/TS",
-        link: "https://grimdvl.github.io/TS/"
-    },
+    // {
+    //     id: 13,
+    //     src: require("../../../assets/img/projects/ts.jpg"),
+    //     alt: "ts-project",
+    //     title: "TS",
+    //     description: "TS...",
+    //     linkGit: "https://github.com/Grimdvl/TS",
+    //     link: "https://grimdvl.github.io/TS/"
+    // },
+    // {
+    //     id: 14,
+    //     src: require("../../../assets/img/projects/ts.jpg"),
+    //     alt: "ts-project",
+    //     title: "TS",
+    //     description: "TS...",
+    //     linkGit: "https://github.com/Grimdvl/TS",
+    //     link: "https://grimdvl.github.io/TS/"
+    // },
 ];
 
 export default portfolioData;
