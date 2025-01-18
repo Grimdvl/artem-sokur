@@ -160,9 +160,15 @@
         }
         &__slide {
             position: absolute;
-            top: 55%;
-            right: -10%;
-            transform: rotate(90deg);
+            top: 50%;
+            // height: 15rem;
+            gap: 5rem;
+            right: 0;
+            writing-mode: vertical-rl;
+            // text-orientation: mixed;
+            &-prev, &-next {
+                transform: rotate(90deg);
+            }
         }
     }
 }

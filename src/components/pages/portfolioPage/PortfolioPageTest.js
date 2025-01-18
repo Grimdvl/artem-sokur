@@ -11,9 +11,13 @@ const PortfolioPage = () => {
     const [isVertical, setIsVertical] = useState(window.innerWidth <= 768);
     const [isStart, setIsStart] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const [parentActive, setParentActive] = useState(false);
+
     const portfolioRef = useRef(null);
+    const itemsRef = useRef([]);
 
     const itemsToShow = 10;
+    const activeClass = 'active';
 
     useEffect(() => {
         setShowContent(true);
@@ -22,9 +26,9 @@ const PortfolioPage = () => {
         window.addEventListener('resize', handleResize);
 
         const handleClickOutside = (event) => {
-            if (!event.target.closest('.portfolio__items')) {
+            if (portfolioRef.current && !portfolioRef.current.contains(event.target)) {
                 setActiveIndex(null);
-                portfolioRef.current.classList.remove('active');
+                setParentActive(false);
             }
         };
 
@@ -42,22 +46,47 @@ const PortfolioPage = () => {
         setIsEnd(currentIndex >= totalItems - itemsToShow);
     }, [currentIndex, itemsToShow]);
 
-    const calculateSwipePosition = () => {
-        if (!portfolioRef.current) return 0;
+    const removeActiveClass = () => {
+        itemsRef.current.forEach((item) => {
+            if (item) {
+                item.classList.remove(activeClass);
+            }
+        });
+        portfolioRef.current.classList.remove(activeClass);
+        portfolioRef.current.style.marginTop = '0';
+        portfolioRef.current.style.marginBottom = '0';
+    };
 
-        const firstItem = portfolioRef.current.firstElementChild;
-        const gapSizeRem = 0.4;
-        const itemSizeRem =
-            isVertical
-                ? firstItem.offsetHeight / parseFloat(getComputedStyle(document.documentElement).fontSize)
-                : firstItem.offsetWidth / parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const addActiveClass = (index) => {
+        removeActiveClass();
+        const clickedItem = itemsRef.current[index];
+        if (clickedItem) {
+            clickedItem.classList.add(activeClass);
+        }
+        portfolioRef.current.classList.add(activeClass);
 
-        return itemSizeRem + gapSizeRem;
+        if (isVertical) {
+            if (index === 0) {
+                portfolioRef.current.style.marginTop = '10vh';
+                portfolioRef.current.style.marginBottom = '0';
+            } else if (index === 1 || index === 2) {
+                portfolioRef.current.style.marginTop = '5vh';
+                portfolioRef.current.style.marginBottom = '0';
+            } else {
+                portfolioRef.current.style.marginTop = '0';
+                portfolioRef.current.style.marginBottom = '5vh';
+            }
+        }
+    };
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+        setParentActive(true);
+        addActiveClass(index);
     };
 
     const handleNextSlide = () => {
-        const totalItems = portfolioData.length;
-        const maxIndex = totalItems - itemsToShow;
+        const maxIndex = portfolioData.length - itemsToShow;
         if (currentIndex < maxIndex) {
             setCurrentIndex((prevIndex) => prevIndex + 1);
         }
@@ -69,20 +98,6 @@ const PortfolioPage = () => {
         }
     };
 
-    const handleItemClick = (index) => {
-        setActiveIndex(index);
-        portfolioRef.current.classList.add('active');
-    };
-
-    const swipePositionRem = calculateSwipePosition();
-    const transformValue = isVertical
-        ? `translateY(-${currentIndex * swipePositionRem}rem)`
-        : `translateX(-${currentIndex * swipePositionRem}rem)`;
-
-    if (portfolioRef.current) {
-        portfolioRef.current.style.transform = transformValue;
-    }
-
     return (
         <CSSTransition
             in={showContent}
@@ -92,19 +107,29 @@ const PortfolioPage = () => {
             unmountOnExit
         >
             <section className="portfolio" id="portfolio">
-                <div className="portfolio-head">
-                    <h2 className="portfolio-title title">Portfolio</h2>
-                    <div className="portfolio-subtitle subtitle">My works</div>
-                    <div className="portfolio-divider divider"></div>
+                <div className="portfolio__head">
+                    <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
+                    <div className="portfolio__head-subtitle fade-in-right">My works</div>
+                    <div className="portfolio__head-divider divider fade-in-up"></div>
                 </div>
 
                 <div
-                    className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'}`}
+                    className={`portfolio__items fade-in ${isVertical ? 'vertical' : 'horizontal'} ${
+                        parentActive ? 'active' : ''
+                    }`}
                     ref={portfolioRef}
                 >
-                        {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
-                            const isVisible = index >= currentIndex && index < currentIndex + itemsToShow;
-                            return (
+                    {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
+                        const isVisible = index >= currentIndex && index < currentIndex + itemsToShow;
+                        return (
+                            <CSSTransition
+                                key={id}
+                                in={isVisible}
+                                timeout={0}
+                                classNames="slide"
+                                mountOnEnter
+                                unmountOnExit
+                            >
                                 <PortfolioItems
                                     id={id}
                                     src={src}
@@ -113,15 +138,17 @@ const PortfolioPage = () => {
                                     description={description}
                                     linkGit={linkGit}
                                     link={link}
-                                    isActive={activeIndex === index}
+                                    ref={(el) => (itemsRef.current[index] = el)}
                                     isHidden={!isVisible}
+                                    isActive={activeIndex === index}
                                     onClick={() => handleItemClick(index)}
                                 />
-                            );
-                        })}
+                            </CSSTransition>
+                        );
+                    })}
                 </div>
 
-                <div className="portfolio__slide">
+                <div className="portfolio__slide fade-in">
                     <button
                         className={`portfolio__slide-prev ${isStart ? 'end' : ''}`}
                         onClick={handlePrevSlide}
