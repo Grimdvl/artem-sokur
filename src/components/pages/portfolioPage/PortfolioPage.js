@@ -116,7 +116,7 @@ const PortfolioPage = () => {
                 </div>
 
                 <div
-                    className={`portfolio__items fade-in-portfolio ${isVertical ? 'vertical' : 'horizontal'}`}
+                    className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'}`}
                     ref={portfolioRef}
                 >
                         {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
@@ -138,7 +138,7 @@ const PortfolioPage = () => {
                         })}
                 </div>
 
-                <div className="portfolio__slide fade-in-up">
+                <div className="portfolio__slide">
                     <button
                         className={`portfolio__slide-prev ${isStart ? 'end' : ''}`}
                         onClick={handlePrevSlide}

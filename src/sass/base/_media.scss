@@ -161,14 +161,15 @@
         &__slide {
             position: absolute;
             top: 50%;
+            transform: rotate(90deg);
             // height: 15rem;
-            gap: 5rem;
+            // gap: 5rem;
             right: 0;
-            writing-mode: vertical-rl;
-            // text-orientation: mixed;
-            &-prev, &-next {
-                transform: rotate(90deg);
-            }
+
+            // writing-mode: vertical-rl;
+            // &-prev, &-next {
+            //     transform: rotate(90deg);
+            // }
         }
     }
 }
