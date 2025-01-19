@@ -1,5 +1,5 @@
 import { CSSTransition } from 'react-transition-group';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import portfolioData from './PortfolioData';
 import PortfolioItems from './PortfolioItems';
@@ -45,7 +45,7 @@ const PortfolioPage = () => {
         setIsEnd(startIndex >= totalItems - itemsToShow);
     }, [startIndex, itemsToShow, totalItems]);
 
-    const calculateSwipePosition = () => {
+    const calculateSwipePosition = useCallback(() => {
         if (!portfolioRef.current) return 0;
 
         const firstItem = portfolioRef.current.firstElementChild;
@@ -56,7 +56,7 @@ const PortfolioPage = () => {
                 : firstItem.offsetWidth / parseFloat(getComputedStyle(document.documentElement).fontSize);
 
         return itemSizeRem + gapSizeRem;
-    };
+    }, [isVertical]);
 
     const handleNextSlide = () => {
         if (startIndex < totalItems - itemsToShow) {
@@ -95,7 +95,7 @@ const PortfolioPage = () => {
             const transformValue = isVertical
                 ? `translateY(${currentIndex * -1 * swipePositionRem}rem)`
                 : `translateX(${currentIndex * -1 * swipePositionRem}rem)`;
-    
+
             portfolioRef.current.style.transform = transformValue;
         }
     }, [currentIndex, isVertical, calculateSwipePosition]);
