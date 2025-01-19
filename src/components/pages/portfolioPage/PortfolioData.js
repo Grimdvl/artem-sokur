@@ -118,7 +118,7 @@ const portfolioData = [
     },
     // {
     //     id: 13,
-    //     src: require("../../../assets/img/projects/ts.jpg"),
+    //     // src: require("../../../assets/img/projects/ts.jpg"),
     //     alt: "ts-project",
     //     title: "TS",
     //     description: "TS...",
@@ -127,7 +127,7 @@ const portfolioData = [
     // },
     // {
     //     id: 14,
-    //     src: require("../../../assets/img/projects/ts.jpg"),
+    //     // src: require("../../../assets/img/projects/ts.jpg"),
     //     alt: "ts-project",
     //     title: "TS",
     //     description: "TS...",
