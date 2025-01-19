@@ -43,7 +43,7 @@ const PortfolioPage = () => {
     useEffect(() => {
         setIsStart(startIndex === 0);
         setIsEnd(startIndex >= totalItems - itemsToShow);
-    }, [startIndex, itemsToShow]);
+    }, [startIndex, itemsToShow, totalItems]);
 
     const calculateSwipePosition = () => {
         if (!portfolioRef.current) return 0;
@@ -98,7 +98,7 @@ const PortfolioPage = () => {
     
             portfolioRef.current.style.transform = transformValue;
         }
-    }, [currentIndex, isVertical]);
+    }, [currentIndex, isVertical, calculateSwipePosition]);
 
     return (
         <CSSTransition
