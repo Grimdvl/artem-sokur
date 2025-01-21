@@ -31,7 +31,7 @@
         position: relative;
         width: 7rem;
         height: 6rem;
-        transition: .5s;
+        transition: .5s transform;
         z-index: 2;
         a {
             position: relative;
@@ -76,7 +76,7 @@
     transform: translateY(-2.7rem);
     a {
         .icon {
-            transition: .5s all;
+            transition: .5s transform, .5s background-color, .5s color;
             color: black;
             background: white;
             &:before {
