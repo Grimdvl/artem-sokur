@@ -2,7 +2,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
-const ContactsPage = () => {
+const ContactsPage = ({isAnimated}) => {
     const [showContent, setShowContent] = useState(false);
     const typedElement = useRef(null)
 
@@ -27,11 +27,11 @@ const ContactsPage = () => {
     return (
         <>
         <CSSTransition
-            in={showContent}
+            in={isAnimated}
             timeout={1000}
             classNames="animated"
-            mountOnEnter
-            unmountOnExit
+            // mountOnEnter
+            // unmountOnExit
             >
             <section className="contacts" id="contacts">
                 <div className="contacts__descr">

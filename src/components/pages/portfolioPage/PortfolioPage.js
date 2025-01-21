@@ -4,11 +4,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import portfolioData from './PortfolioData';
 import PortfolioItems from './PortfolioItems';
 
-const PortfolioPage = () => {
+const PortfolioPage = ({isAnimated}) => {
     const totalItems = portfolioData.length;
     const itemsToShow = 10;
 
-    const [showContent, setShowContent] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [startIndex, setStartIndex] = useState(Math.floor((totalItems - itemsToShow) / 2));
     const [activeIndex, setActiveIndex] = useState(null);
@@ -18,7 +17,6 @@ const PortfolioPage = () => {
     const portfolioRef = useRef(null);
 
     useEffect(() => {
-        setShowContent(true);
 
         const handleResize = () => setIsVertical(window.innerWidth <= 768);
         window.addEventListener('resize', handleResize);
@@ -102,12 +100,12 @@ const PortfolioPage = () => {
 
     return (
         <CSSTransition
-            in={showContent}
+            in={isAnimated}
             timeout={1000}
             classNames="animated"
-            mountOnEnter
-            unmountOnExit
-        >
+            // mountOnEnter
+            // unmountOnExit
+            >
             <section className="portfolio" id="portfolio">
                 <div className="portfolio-head">
                     <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
@@ -117,8 +115,7 @@ const PortfolioPage = () => {
 
                 <div
                     className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'}`}
-                    ref={portfolioRef}
-                >
+                    ref={portfolioRef}>
                         {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
                             const isVisible = index >= startIndex && index < startIndex + itemsToShow;
                             return (
@@ -132,8 +129,7 @@ const PortfolioPage = () => {
                                     link={link}
                                     isActive={activeIndex === index}
                                     isHidden={!isVisible}
-                                    onClick={() => handleItemClick(index)}
-                                />
+                                    onClick={() => handleItemClick(index)}/>
                             );
                         })}
                 </div>

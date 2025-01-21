@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import NavigationMenu from '../navigationMenu/NavigationMenu';
 
 import {
@@ -9,14 +10,16 @@ import {
 } from '../pages';
 
 function App() {
+    const [activeSection, setActiveSection] = useState('');
+
     return (
         <main className="app">
-            <NavigationMenu/>
-            <PromoPage/>
-            <ResumePage/>
-            <SkillsPage/>
-            <PortfolioPage/>
-            <ContactsPage/>
+            <NavigationMenu setActiveSectionCallback={setActiveSection}/>
+            <PromoPage isAnimated={activeSection === 'promo'}/>
+            <ResumePage isAnimated={activeSection === 'resume'}/>
+            <SkillsPage isAnimated={activeSection === 'skills'}/>
+            <PortfolioPage isAnimated={activeSection === 'portfolio'}/>
+            <ContactsPage isAnimated={activeSection === 'contacts'}/>
         </main>
     );
 }

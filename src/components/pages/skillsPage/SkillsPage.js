@@ -3,22 +3,15 @@ import SkillsCards from './skillsCards/SkillsCards';
 import SkillsRatings from './skillsRatings/SkillsRatings';
 
 import { CSSTransition } from 'react-transition-group';
-import { useState, useEffect } from 'react';
 
-const SkillsPage = () => {
-    const [showContent, setShowContent] = useState(false);
-
-    useEffect(() => {
-        setShowContent(true);
-    }, []);
-
+const SkillsPage = ({isAnimated}) => {
     return (
         <CSSTransition
-            in={showContent}
+            in={isAnimated}
             timeout={1000}
             classNames="animated"
-            mountOnEnter
-            unmountOnExit
+            // mountOnEnter
+            // unmountOnExit
             >
             <section className="skills" id="skills">
                 <div className="skills-head">

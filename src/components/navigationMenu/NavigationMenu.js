@@ -1,7 +1,6 @@
-// import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect, useMemo } from 'react';
 
-const NavigationMenu = () => {
+const NavigationMenu = ({setActiveSectionCallback }) => {
     const sections = useMemo(
         () => ({
             resume: "person-outline",
@@ -36,19 +35,21 @@ const NavigationMenu = () => {
             }
 
             if (foundSection) {
+                setPromoActive(true);
                 setActiveSection(foundSection);
                 setIndicatorVisible(true);
-                setPromoActive(true);
+                setActiveSectionCallback(foundSection);
             } else if (scrollY <= 400) {
                 setPromoActive(false);
                 setIndicatorVisible(false);
                 setActiveSection('');
+                setActiveSectionCallback('promo');
             }
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [sections]);
+    }, [sections, setActiveSectionCallback]);
 
     const NavigationMenuItem = ({ section, icon }) => {
         return (

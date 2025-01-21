@@ -1,22 +1,14 @@
 import { CSSTransition } from 'react-transition-group';
-import { useState, useEffect } from 'react';
-
 import promoPhoto from '../../../assets/img/photo/promo-photo.png';
 
-const PromoPage = () => {
-    const [showContent, setShowContent] = useState(false);
-
-    useEffect(() => {
-        setShowContent(true);
-    }, []);
-
+const PromoPage = ({isAnimated}) => {
     return (
         <CSSTransition
-            in={showContent}
+            in={isAnimated}
             timeout={1000}
             classNames="animated"
-            mountOnEnter
-            unmountOnExit
+            // mountOnEnter
+            // unmountOnExit
             >
             <section className="promo" id="promo">
                 <div className="promo__content">
