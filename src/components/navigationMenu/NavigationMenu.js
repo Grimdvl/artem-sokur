@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 
-const NavigationMenu = ({setActiveSectionCallback }) => {
+const NavigationMenu = ({setActiveSectionCallback, setShowPromo }) => {
     const sections = useMemo(
         () => ({
             resume: "person-outline",
@@ -39,6 +39,7 @@ const NavigationMenu = ({setActiveSectionCallback }) => {
                 setActiveSection(foundSection);
                 setIndicatorVisible(true);
                 setActiveSectionCallback(foundSection);
+                setShowPromo(false);
             } else if (scrollY <= 400) {
                 setPromoActive(false);
                 setIndicatorVisible(false);
@@ -49,7 +50,7 @@ const NavigationMenu = ({setActiveSectionCallback }) => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [sections, setActiveSectionCallback]);
+    }, [sections, setActiveSectionCallback, setShowPromo]);
 
     const NavigationMenuItem = ({ section, icon }) => {
         return (

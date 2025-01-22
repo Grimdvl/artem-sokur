@@ -37,6 +37,11 @@ section {
     z-index: 1;
 }
 
+.section-placeholder {
+    height: 100vh;
+}
+
+
 .divider {
     @include divider;
 }

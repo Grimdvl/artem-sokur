@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import ratingsData from "./RatingsData";
 import RatingsItems from "./RatingsItems";
 
-const SkillsRatings = () => {
+const SkillsRatings = ({isAnimated}) => {
     const [progresses, setProgresses] = useState(
         ratingsData.map(() => ({ value: 0, width: 0 }))
     );
 
     useEffect(() => {
+        if (!isAnimated) return;
+
         const intervalIds = [];
 
         ratingsData.forEach((rating, index) => {
@@ -41,7 +43,7 @@ const SkillsRatings = () => {
         return () => {
             intervalIds.forEach(clearInterval);
         };
-    }, []);
+    }, [isAnimated]);
 
     return (
         <div className="skills__ratings">

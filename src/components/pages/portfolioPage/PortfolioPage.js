@@ -22,6 +22,7 @@ const PortfolioPage = ({isAnimated}) => {
         window.addEventListener('resize', handleResize);
 
         const handleClickOutside = (event) => {
+            if (!portfolioRef.current) return;
             if (!event.target.closest('.portfolio__items')) {
                 setActiveIndex(null);
                 portfolioRef.current.classList.remove('active');
@@ -99,57 +100,58 @@ const PortfolioPage = ({isAnimated}) => {
     }, [currentIndex, isVertical, calculateSwipePosition]);
 
     return (
-        <CSSTransition
-            in={isAnimated}
-            timeout={1000}
-            classNames="animated"
-            // mountOnEnter
-            // unmountOnExit
-            >
-            <section className="portfolio" id="portfolio">
-                <div className="portfolio-head">
-                    <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
-                    <div className="portfolio__head-subtitle fade-in-right">My works</div>
-                    <div className="portfolio__headdivider divider fade-in-up"></div>
-                </div>
+        <div id="portfolio" className="section-placeholder">
+            <CSSTransition
+                in={isAnimated}
+                timeout={1000}
+                classNames="animated"
+                mountOnEnter
+                unmountOnExit>
+                <section className="portfolio">
+                        <div className="portfolio-head">
+                            <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
+                            <div className="portfolio__head-subtitle fade-in-right">My works</div>
+                            <div className="portfolio__headdivider divider fade-in-up"></div>
+                        </div>
 
-                <div
-                    className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'}`}
-                    ref={portfolioRef}>
-                        {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
-                            const isVisible = index >= startIndex && index < startIndex + itemsToShow;
-                            return (
-                                <PortfolioItems
-                                    id={id}
-                                    src={src}
-                                    alt={alt}
-                                    title={title}
-                                    description={description}
-                                    linkGit={linkGit}
-                                    link={link}
-                                    isActive={activeIndex === index}
-                                    isHidden={!isVisible}
-                                    onClick={() => handleItemClick(index)}/>
-                            );
-                        })}
-                </div>
+                        <div
+                            className={`portfolio__items ${isVertical ? 'vertical' : 'horizontal'}`}
+                            ref={portfolioRef}>
+                                {portfolioData.map(({ id, src, alt, title, description, linkGit, link }, index) => {
+                                    const isVisible = index >= startIndex && index < startIndex + itemsToShow;
+                                    return (
+                                        <PortfolioItems
+                                            id={id}
+                                            src={src}
+                                            alt={alt}
+                                            title={title}
+                                            description={description}
+                                            linkGit={linkGit}
+                                            link={link}
+                                            isActive={activeIndex === index}
+                                            isHidden={!isVisible}
+                                            onClick={() => handleItemClick(index)}/>
+                                    );
+                                })}
+                        </div>
 
-                <div className="portfolio__slide">
-                    <button
-                        className={`portfolio__slide-prev ${isStart ? 'end' : ''}`}
-                        onClick={handlePrevSlide}
-                    >
-                        <i className="bx bx-left-arrow-alt"></i>
-                    </button>
-                    <button
-                        className={`portfolio__slide-next ${isEnd ? 'end' : ''}`}
-                        onClick={handleNextSlide}
-                    >
-                        <i className="bx bx-right-arrow-alt"></i>
-                    </button>
-                </div>
-            </section>
-        </CSSTransition>
+                        <div className="portfolio__slide">
+                            <button
+                                className={`portfolio__slide-prev ${isStart ? 'end' : ''}`}
+                                onClick={handlePrevSlide}
+                            >
+                                <i className="bx bx-left-arrow-alt"></i>
+                            </button>
+                            <button
+                                className={`portfolio__slide-next ${isEnd ? 'end' : ''}`}
+                                onClick={handleNextSlide}
+                            >
+                                <i className="bx bx-right-arrow-alt"></i>
+                            </button>
+                        </div>
+                </section>
+            </CSSTransition>
+        </div>
     );
 };
 

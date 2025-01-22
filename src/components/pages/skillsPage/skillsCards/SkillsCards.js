@@ -3,7 +3,7 @@ import VanillaTilt from 'vanilla-tilt';
 import CardsItems from './CardsItems';
 import cardsData from './CardsData';
 
-const SkillsCards = () => {
+const SkillsCards = ({isAnimated}) => {
     const [progresses, setProgresses] = useState(cardsData.map(() => 0));
     const [blocks, setBlocks] = useState(
         cardsData.map(() =>
@@ -46,6 +46,8 @@ const SkillsCards = () => {
     }, []);
 
     useEffect(() => {
+        if (!isAnimated) return;
+
         let isCancelled = false;
 
         const incrementProgress = () => {
@@ -79,7 +81,7 @@ const SkillsCards = () => {
             isCancelled = true;
             clearInterval(interval);
         };
-    }, []);
+    }, [isAnimated]);
 
     return (
         <div className="skills__wrapper">

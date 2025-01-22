@@ -1,7 +1,9 @@
-import PromoPage from "./promoPage/PromoPage";
-import ResumePage from "./resumePage/ResumePage";
-import SkillsPage from "./skillsPage/SkillsPage";
-import PortfolioPage from "./portfolioPage/PortfolioPage";
-import ContactsPage from "./contactsPage/ContactsPage";
+import { lazy } from 'react';
 
-export {PromoPage, ResumePage, SkillsPage, PortfolioPage, ContactsPage};
+const PromoPage = lazy(() => import('./promoPage/PromoPage'));
+const ResumePage = lazy(() => import('./resumePage/ResumePage'));
+const SkillsPage = lazy(() => import('./skillsPage/SkillsPage'));
+const PortfolioPage = lazy(() => import('./portfolioPage/PortfolioPage'));
+const ContactsPage = lazy(() => import('./contactsPage/ContactsPage'));
+
+export { PromoPage, ResumePage, SkillsPage, PortfolioPage, ContactsPage };
