@@ -87,6 +87,7 @@ const SkillsCards = ({isAnimated}) => {
         <div className="skills__wrapper">
             {cardsData.map(({ id, src, alt, title, description }, index) => (
                 <CardsItems
+                    isAnimated={isAnimated}
                     key={id}
                     ref={(el) => (cardRefs.current[index] = el)}
                     className={`skills__card ${flippedStates[index] ? 'active' : ''}`}
@@ -98,7 +99,7 @@ const SkillsCards = ({isAnimated}) => {
                     blocks={blocks[index]}
                     handleFlip={() => handleFlip(index)}
                     onMouseMove={(event) => handleMouseMove(index, event)}
-                />
+                    />
             ))}
         </div>
     );

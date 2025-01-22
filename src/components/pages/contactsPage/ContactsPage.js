@@ -25,10 +25,11 @@ const ContactsPage = ({isAnimated}) => {
         <div id="contacts" className="section-placeholder">
             <CSSTransition
                 in={isAnimated}
-                timeout={0}
+                timeout={1000}
                 classNames="animated"
-                mountOnEnter
-                unmountOnExit>
+                // mountOnEnter
+                // unmountOnExit
+                >
                 <section className="contacts">
                     <div className="contacts__descr">
                         <div className="contacts-head">

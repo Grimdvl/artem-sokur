@@ -37,12 +37,13 @@ section {
     z-index: 1;
 }
 
-.section-placeholder {
-    min-height: 100vh;
-}
+// .section-placeholder {
+//     min-height: 100vh;
+// }
 
 
 .divider {
+    @include disappear;
     @include divider;
 }
 

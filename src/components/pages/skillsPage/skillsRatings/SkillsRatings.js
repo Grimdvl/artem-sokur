@@ -48,12 +48,13 @@ const SkillsRatings = ({isAnimated}) => {
     return (
         <div className="skills__ratings">
             {ratingsData.map(({ id, title, target }, index) => (
-                <RatingsItems
-                    key={id}
-                    title={title}
-                    target={target}
-                    progress={progresses[index]}
-                />
+                    <RatingsItems
+                        isAnimated={isAnimated}
+                        key={id}
+                        title={title}
+                        target={target}
+                        progress={progresses[index]}
+                        />
             ))}
         </div>
     );

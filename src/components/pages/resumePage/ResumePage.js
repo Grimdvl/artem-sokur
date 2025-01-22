@@ -37,8 +37,9 @@ const ResumePage = ({isAnimated}) => {
                 in={isAnimated}
                 classNames="animated"
                 timeout={duration}
-                mountOnEnter
-                unmountOnExit>
+                // mountOnEnter
+                // unmountOnExit
+                >
                 <section className="resume">
                     <div className="resume__head">
                         <h2 className="resume__head-title fade-in-down">Resume</h2>

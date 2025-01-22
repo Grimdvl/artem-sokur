@@ -9,10 +9,11 @@ const SkillsPage = ({isAnimated}) => {
         <div id="skills" className="section-placeholder">
             <CSSTransition
                 in={isAnimated}
-                timeout={0}
+                timeout={1000}
                 classNames="animated"
-                mountOnEnter
-                unmountOnExit>
+                // mountOnEnter
+                // unmountOnExit
+                >
                 <section className="skills">
                     <div className="skills-head">
                         <h2 className="skills-title fade-in-down">Skills</h2>

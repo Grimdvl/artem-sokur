@@ -6,6 +6,7 @@
     position: relative;
     &__head {
         &-title {
+            @include disappear;
             position: relative;
             text-align: center;
             font-weight: 700;
@@ -21,6 +22,7 @@
             }
         }
         &-subtitle {
+            @include disappear;
             font-size: 1.6rem;
             line-height: 2.4rem;
             text-align: center;

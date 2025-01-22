@@ -103,10 +103,11 @@ const PortfolioPage = ({isAnimated}) => {
         <div id="portfolio" className="section-placeholder">
             <CSSTransition
                 in={isAnimated}
-                timeout={0}
+                timeout={1000}
                 classNames="animated"
-                mountOnEnter
-                unmountOnExit>
+                // mountOnEnter
+                // unmountOnExit
+                >
                 <section className="portfolio">
                         <div className="portfolio-head">
                             <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>

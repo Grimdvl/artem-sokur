@@ -1,6 +1,7 @@
 .resume {
     &__head {
         &-title {
+            @include disappear;
             position: relative;
             text-align: center;
             font-weight: 700;
@@ -16,6 +17,7 @@
             }
         }
         &-subtitle {
+            @include disappear;
             font-size: 1.6rem;
             line-height: 2.4rem;
             text-align: center;
@@ -28,6 +30,7 @@
         column-gap: 7rem;
         justify-content: center;
         &-photo {
+            @include disappear;
             height: 100%;
             background: transparent;
             position: relative;
@@ -60,6 +63,7 @@
         &-column {
             position: relative;
             &:before {
+                @include disappear;
                 content: '';
                 position: absolute;
                 width: 1.5rem;
@@ -68,15 +72,6 @@
                 border-radius: 100%;
                 left: -.7rem;
                 top: 1.5rem;
-            }
-            .column {
-                &-title {
-                    position: relative;
-                    font-size: 2rem;
-                    line-height: 3rem;
-                    padding-left: 3.5rem;
-                    top: .7rem;
-                }
             }
             ul {
                 position: relative;
@@ -97,6 +92,7 @@
                         top: 45%;
                     }
                     .resume__item {
+                        @include disappear;
                         position: relative;
                         &-head {
                             position: relative;
@@ -180,5 +176,15 @@
                 }
             }
         }
+    }
+}
+.column {
+    &-title {
+        @include disappear;
+        position: relative;
+        font-size: 2rem;
+        line-height: 3rem;
+        padding-left: 3.5rem;
+        top: .7rem;
     }
 }

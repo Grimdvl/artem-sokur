@@ -15,7 +15,9 @@ function App() {
 
     return (
         <main className="app">
-            <NavigationMenu setActiveSectionCallback={setActiveSection} setShowPromo={setShowPromo}/>
+            <NavigationMenu
+                setActiveSectionCallback={setActiveSection}
+                setShowPromo={setShowPromo}/>
 
             <Suspense fallback={<div>Loading...</div>}>
                 <PromoPage
@@ -23,7 +25,7 @@ function App() {
                     showPromo={showPromo}
                     setShowPromo={setShowPromo}/>
                 <ResumePage isAnimated={activeSection === 'resume'} />
-                <SkillsPage isAnimated={activeSection === 'skills'} />
+                <SkillsPage isAnimated={activeSection === 'skills'}/>
                 <PortfolioPage isAnimated={activeSection === 'portfolio'} />
                 <ContactsPage isAnimated={activeSection === 'contacts'} />
             </Suspense>

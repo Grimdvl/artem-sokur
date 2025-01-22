@@ -3,6 +3,7 @@
     justify-content: space-around;
     align-items: center;
     &__photo {
+        @include disappear;
         position: relative;
         &-img {
             width: 30vw;
@@ -32,6 +33,7 @@
             margin: 2.5rem 0;
         }
         &-title {
+            @include disappear;
             position: relative;
             font-size: 5.6rem;
             font-weight: 700;
@@ -71,10 +73,12 @@
             }
         }
         &-description {
+            @include disappear;
             font-size: 1.6rem;
             margin: 2rem 0 4rem;
         }
         &--button {
+            @include disappear;
             cursor: pointer;
             position: relative;
             display: inline-flex;
@@ -101,4 +105,7 @@
             }
         }
     }
+}
+.wrapper-subtitle {
+    @include disappear;
 }

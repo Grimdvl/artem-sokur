@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 
-const NavigationMenu = ({setActiveSectionCallback, setShowPromo }) => {
+const NavigationMenu = ({setActiveSectionCallback, setShowPromo}) => {
     const sections = useMemo(
         () => ({
             resume: "person-outline",
@@ -12,7 +12,7 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo }) => {
     );
 
     const [activeSection, setActiveSection] = useState('');
-    const [promoActive, setPromoActive] = useState(false);
+    // const [promoActive, setPromoActive] = useState(false);
     const [isIndicatorVisible, setIndicatorVisible] = useState(false);
 
     useEffect(() => {
@@ -35,13 +35,12 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo }) => {
             }
 
             if (foundSection) {
-                setPromoActive(true);
                 setActiveSection(foundSection);
                 setIndicatorVisible(true);
                 setActiveSectionCallback(foundSection);
                 setShowPromo(false);
             } else if (scrollY <= 400) {
-                setPromoActive(false);
+                setShowPromo(true);
                 setIndicatorVisible(false);
                 setActiveSection('');
                 setActiveSectionCallback('promo');
@@ -79,7 +78,7 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo }) => {
                 </ul>
             </nav>
 
-            <a href="#promo" className={`home ${promoActive ? 'active' : ''}`}>
+            <a href="#promo" className={`home ${setShowPromo ? 'active' : ''}`}>
                 <i className="home--up bx bx-chevron-up"></i>
             </a>
         </div>
