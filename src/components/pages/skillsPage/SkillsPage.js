@@ -9,7 +9,7 @@ const SkillsPage = ({isAnimated}) => {
         <div id="skills" className="section-placeholder">
             <CSSTransition
                 in={isAnimated}
-                timeout={1000}
+                timeout={0}
                 classNames="animated"
                 mountOnEnter
                 unmountOnExit>
