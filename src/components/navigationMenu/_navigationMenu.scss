@@ -254,11 +254,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    transition: .5s transform, .5s opacity;
+    transition: .5s transform, .5s opacity, .5s visibility;
     font-size: 5rem;
     height: 6rem;
     width: 10rem;
-    opacity: 0;
+    @include disappear;
     // animation: slideTop 1s ease forwards;
     &--up {
         display: flex;
@@ -288,6 +288,8 @@
         }
     }
     &.active {
+        @include appear;
+        transform: translateX(4.9rem);
         .home {
             &--up {
                 box-shadow: 0 0 1rem $main-color;
@@ -296,8 +298,6 @@
                 }
             }
         }
-        opacity: 1;
-        transform: translateX(4.9rem);
     }
 }
 

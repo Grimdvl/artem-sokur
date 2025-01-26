@@ -1,10 +1,6 @@
-$main-color: #FFA501;
 // $main-color: #0ef;
 // $bg-color: #323946;
 // $bg2-color: #1f242d;
-
-$bg-color: #18222c;
-$second-color: #2ea6ff;
 
 // $main-color: #00abf0;
 // $dark-color: #00abf0;
@@ -13,3 +9,11 @@ $second-color: #2ea6ff;
 
 $index: calc(1vw + 1vh);
 $transition: cubic-bezier(.1, .7, 0, 1);
+
+$main-color: #FFA501;
+$bg-color: #18222c;
+$second-color: #2ea6ff;
+
+:root {
+    --text-color: black;
+}

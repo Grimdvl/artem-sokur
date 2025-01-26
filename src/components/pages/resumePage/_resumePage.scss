@@ -166,10 +166,10 @@
                         }
                         &.animated {
                             &:before {
-                                animation: resumeBefore .5s 1s forwards;
+                                animation: resumeBefore .5s .5s forwards;
                             }
                             .resume__item {
-                                animation: in .5s 1.5s forwards;
+                                animation: in .5s 1s forwards;
                             }
                         }
                     }

@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import CardsItems from './CardsItems';
 import cardsData from './CardsData';
 
 const SkillsCards = ({isAnimated}) => {
+    const cardRefs = useRef([]);
+    const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
     const [progresses, setProgresses] = useState(cardsData.map(() => 0));
     const [blocks, setBlocks] = useState(
         cardsData.map(() =>
@@ -14,17 +16,29 @@ const SkillsCards = ({isAnimated}) => {
             }))
         )
     );
-    const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
 
-    const cardRefs = useRef([]);
+    const clearData = useCallback(() => {
+        setProgresses(cardsData.map(() => 0));
+        setFlippedStates(cardsData.map(() => false));
+        setBlocks(
+            cardsData.map(() =>
+                Array.from({ length: 100 }, (_, i) => ({
+                    isActive: false,
+                    rotation: 3.6 * (i + 1),
+                    delay: (i + 1) / 60,
+                }))
+            )
+        );
+    }, []);
+    
 
-    const handleFlip = (index) => {
+    const handleFlip = useCallback((index) => {
         setFlippedStates((prev) =>
             prev.map((state, i) => (i === index ? !state : state))
         );
-    };
+    }, []);
 
-    const handleMouseMove = (index, event) => {
+    const handleMouseMove = useCallback((index, event) => {
         const card = cardRefs.current[index];
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -32,7 +46,13 @@ const SkillsCards = ({isAnimated}) => {
 
         card.style.setProperty('--x', `${x}px`);
         card.style.setProperty('--y', `${y}px`);
-    };
+    }, []);
+
+    useEffect(() => {
+        if (!isAnimated) {
+            clearData();
+        }
+    }, [isAnimated, clearData]);
 
     useEffect(() => {
         cardRefs.current.forEach((card) => {

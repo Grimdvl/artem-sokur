@@ -1,6 +1,7 @@
 import { Suspense, useState } from 'react';
 
 import NavigationMenu from '../navigationMenu/NavigationMenu';
+import MenuBar from '../menuBar/MenuBar';
 import {
     PromoPage,
     ResumePage,
@@ -17,7 +18,10 @@ function App() {
         <main className="app">
             <NavigationMenu
                 setActiveSectionCallback={setActiveSection}
-                setShowPromo={setShowPromo}/>
+                setShowPromo={setShowPromo}
+                showPromo={showPromo}/>
+
+            <MenuBar/>
 
             <Suspense fallback={<div>Loading...</div>}>
                 <PromoPage

@@ -1,6 +1,6 @@
 import { CSSTransition } from "react-transition-group";
 
-const RatingsItems = ({ id, title, progress, isAnimated }) => {
+const RatingsItems = ({ title, progress, isAnimated }) => {
     return (
         <CSSTransition
             in={isAnimated}

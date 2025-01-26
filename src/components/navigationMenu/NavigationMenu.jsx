@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 
-const NavigationMenu = ({setActiveSectionCallback, setShowPromo}) => {
+const NavigationMenu = ({setActiveSectionCallback, setShowPromo, showPromo}) => {
     const sections = useMemo(
         () => ({
             resume: "person-outline",
@@ -8,11 +8,9 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo}) => {
             portfolio: "briefcase-outline",
             contacts: "mail-outline",
         }),
-        []
-    );
+    []);
 
     const [activeSection, setActiveSection] = useState('');
-    // const [promoActive, setPromoActive] = useState(false);
     const [isIndicatorVisible, setIndicatorVisible] = useState(false);
 
     useEffect(() => {
@@ -49,7 +47,7 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo}) => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [sections, setActiveSectionCallback, setShowPromo]);
+    }, [sections, setActiveSectionCallback, setShowPromo, showPromo]);
 
     const NavigationMenuItem = ({ section, icon }) => {
         return (
@@ -78,7 +76,7 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo}) => {
                 </ul>
             </nav>
 
-            <a href="#promo" className={`home ${setShowPromo ? 'active' : ''}`}>
+            <a href="#promo" className={`home ${!showPromo ? 'active' : ''}`}>
                 <i className="home--up bx bx-chevron-up"></i>
             </a>
         </div>

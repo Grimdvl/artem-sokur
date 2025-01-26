@@ -21,7 +21,7 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
-    color: black;
+    color: var(--text-color);
     transition: .5s color;
     will-change: color;
 }

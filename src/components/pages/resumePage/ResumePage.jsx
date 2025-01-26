@@ -7,7 +7,7 @@ import mainPhoto from '../../../assets/img/photo/main-photo.jpg';
 const ResumePage = ({isAnimated}) => {
     const [currentIndex, setCurrentIndex] = useState(-1);
 
-    const duration = 1000;
+    const duration = 500;
     const totalDuration = resumeData.length * (duration / 1000);
 
     useEffect(() => {
