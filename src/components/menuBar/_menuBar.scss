@@ -13,17 +13,17 @@
         position: absolute;
         width: 5.5rem;
         height: 5.5rem;
-        border: .2rem solid $main-color;
+        border: .2rem solid var(--main-color);
         border-radius: 50%;
-        color: white;
-        background-color: $main-color;
+        color: var(--text-color);
+        background-color: var(--main-color);
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         z-index: 4;
         font-size: 3rem;
-        box-shadow: 0 0 1rem $main-color;
+        box-shadow: 0 0 1rem var(--main-color);
         transition: 1s transform, .5s box-shadow, .5s color, 1s background-color, .5s border;
         &:hover {
             box-shadow: none;
@@ -77,8 +77,8 @@
             cursor: pointer;
             width: 5rem;
             height: 5rem;
-            color: $main-color;
-            border: .2rem solid $main-color;
+            color: var(--main-color);
+            border: .2rem solid var(--main-color);
             border-radius: 50%;
             font-size: 3rem;
             transform: rotate(calc(-110deg / -4 * var(--i)));
@@ -91,7 +91,7 @@
                 font-size: 2rem;
                 &:hover {
                     text-decoration: none;
-                    color: #FFF;
+                    color: var(--text-second);
                     &::before {
                         width: 100%;
                     }
@@ -103,17 +103,17 @@
                     left: 0;
                     width: 0;
                     height: 100%;
-                    background-color: $main-color;
+                    background-color: var(--main-color);
                     z-index: -1;
                     transition: .5s width, .5s background-color;
                 }
                 &.active {
-                    color: white;
+                    color: var(--text-second);
                     &::before {
                         width: 100%;
                     }
                     &:hover {
-                        color: $main-color;
+                        color: var(--main-color);
                         &::before {
                             width: 0;
                         }
@@ -126,14 +126,14 @@
         .menu {
             &-bar {
                 transform: rotate(-130deg);
-                color: $main-color;
+                color: var(--main-color);
                 background-color: transparent;
                 box-shadow: none;
             }
             &-list {
                 transform: rotate(calc(-110deg / 4 * var(--i))) translateX(0);
                 .mode {
-                    box-shadow: 0 0 1rem $main-color;
+                    box-shadow: 0 0 1rem var(--main-color);
                     transition: .5s box-shadow, .5s border;
                     &:hover {
                         box-shadow: none;

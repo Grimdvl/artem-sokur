@@ -14,19 +14,18 @@ const MenuBar = () => {
         setDarkMode(!isDarkMode);
         document.documentElement.classList.toggle('dark-mode');
 
-        // Меняем переменные в зависимости от темы
         const root = document.documentElement;
 
         if (!isDarkMode) {
-            // Темная тема
-            // root.style.setProperty('--main-color', '#2ea6ff');
+            root.style.setProperty('--main-color', '#2EA6FF');
             // root.style.setProperty('--second-color', '#FFA501');
-            root.style.setProperty('--text-color', 'white');
+            root.style.setProperty('--text-color', '#FFF');
+            root.style.setProperty('--text-second', '#18222C');
         } else {
-            // Светлая тема
-            // root.style.setProperty('--main-color', '#FFA501');
-            // root.style.setProperty('--second-color', '#2ea6ff');
-            root.style.setProperty('--text-color', 'black');
+            root.style.setProperty('--main-color', '#FFA501');
+            // root.style.setProperty('--second-color', '#2EA6FF');
+            root.style.setProperty('--text-color', '#000');
+            root.style.setProperty('--text-second', '#FFF');
         }
 
         if (!hasSkillsLoaded) {

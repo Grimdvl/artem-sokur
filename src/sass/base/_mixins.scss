@@ -8,7 +8,7 @@
         width: 3.6rem;
         height: 3.6rem;
         border-radius: 100%;
-        background-color: $main-color;
+        background-color: var(--main-color);
         transition: .5s background-color;
     }
 }
@@ -16,7 +16,7 @@
 @mixin divider {
     width: 6rem;
     height: .3rem;
-    background-color: $main-color;
+    background-color: var(--main-color);
     margin: 2.5rem auto 0 auto;
 }
 

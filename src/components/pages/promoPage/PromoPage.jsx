@@ -12,10 +12,7 @@ const PromoPage = ({ isAnimated, showPromo, setShowPromo }) => {
             <CSSTransition
                 in={isAnimated || showPromo}
                 timeout={1000}
-                classNames="animated"
-                // mountOnEnter
-                // unmountOnExit
-                >
+                classNames="animated">
                 <section className="promo">
                     <div className="promo__content">
                         <div className="promo-head">

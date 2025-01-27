@@ -45,7 +45,7 @@
                 position: absolute;
                 width: 23.5rem;
                 height: 150%;
-                background-color: $main-color;
+                background-color: var(--main-color);
                 animation: spinner 4s linear infinite;
                 transition: 1s background-color;
                 will-change: transform, background-color;
@@ -68,7 +68,7 @@
                 position: absolute;
                 width: 1.5rem;
                 height: 1.5rem;
-                background-color: $main-color;
+                background-color: var(--main-color);
                 border-radius: 100%;
                 left: -.7rem;
                 top: 1.5rem;
@@ -80,7 +80,7 @@
                     content: '';
                     width: .1rem;
                     position: absolute;
-                    background-color: black;
+                    background-color: var(--text-color);
                 }
                 li {
                     position: relative;
@@ -88,7 +88,7 @@
                         content: '';
                         height: .1rem;
                         position: absolute;
-                        background-color: black;
+                        background-color: var(--text-color);
                         top: 45%;
                     }
                     .resume__item {
