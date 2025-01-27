@@ -14,6 +14,9 @@ function App() {
     const [activeSection, setActiveSection] = useState('');
     const [showPromo, setShowPromo] = useState(false);
 
+    const [activeLanguage, setActiveLanguage] = useState('EN');
+    const [isDarkMode, setDarkMode] = useState(false);
+
     return (
         <main className="app">
             <NavigationMenu
@@ -21,7 +24,11 @@ function App() {
                 setShowPromo={setShowPromo}
                 showPromo={showPromo}/>
 
-            <MenuBar/>
+            <MenuBar
+                activeLanguage={activeLanguage}
+                setActiveLanguage={setActiveLanguage}
+                isDarkMode={isDarkMode}
+                setDarkMode={setDarkMode}/>
 
             <Suspense fallback={<div>Loading...</div>}>
                 <PromoPage
@@ -29,7 +36,7 @@ function App() {
                     showPromo={showPromo}
                     setShowPromo={setShowPromo}/>
                 <ResumePage isAnimated={activeSection === 'resume'} />
-                <SkillsPage isAnimated={activeSection === 'skills'}/>
+                <SkillsPage isAnimated={activeSection === 'skills'} isDarkMode={isDarkMode}/>
                 <PortfolioPage isAnimated={activeSection === 'portfolio'} />
                 <ContactsPage isAnimated={activeSection === 'contacts'} />
             </Suspense>

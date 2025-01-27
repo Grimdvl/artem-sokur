@@ -1,12 +1,16 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import VanillaTilt from 'vanilla-tilt';
-import CardsItems from './CardsItems';
-import cardsData from './CardsData';
+import { useState, useEffect, useRef, useCallback } from "react";
+import VanillaTilt from "vanilla-tilt";
+import CardsItems from "./CardsItems";
+import cardsData from "./CardsData";
 
-const SkillsCards = ({isAnimated}) => {
+const SkillsCards = ({ isAnimated }) => {
     const cardRefs = useRef([]);
-    const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
-    const [progresses, setProgresses] = useState(cardsData.map(() => 0));
+    const [flippedStates, setFlippedStates] = useState(
+        cardsData.map(() => false)
+    );
+    const [progresses, setProgresses] = useState(
+        cardsData.map(() => 0)
+    );
     const [blocks, setBlocks] = useState(
         cardsData.map(() =>
             Array.from({ length: 100 }, (_, i) => ({
@@ -30,7 +34,6 @@ const SkillsCards = ({isAnimated}) => {
             )
         );
     }, []);
-    
 
     const handleFlip = useCallback((index) => {
         setFlippedStates((prev) =>
@@ -44,15 +47,9 @@ const SkillsCards = ({isAnimated}) => {
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 
-        card.style.setProperty('--x', `${x}px`);
-        card.style.setProperty('--y', `${y}px`);
+        card.style.setProperty("--x", `${x}px`);
+        card.style.setProperty("--y", `${y}px`);
     }, []);
-
-    useEffect(() => {
-        if (!isAnimated) {
-            clearData();
-        }
-    }, [isAnimated, clearData]);
 
     useEffect(() => {
         cardRefs.current.forEach((card) => {
@@ -66,26 +63,25 @@ const SkillsCards = ({isAnimated}) => {
     }, []);
 
     useEffect(() => {
-        if (!isAnimated) return;
+        if (!isAnimated) {
+            clearData();
+            return;
+        }
 
-        let isCancelled = false;
+        const intervalIds = [];
 
-        const incrementProgress = () => {
-            setProgresses((prevProgresses) =>
-                prevProgresses.map((progress, index) => {
-                    if (progress < cardsData[index].target) {
-                        return progress + 1;
-                    }
-                    return progress;
-                })
-            );
-        };
-
-        const interval = setInterval(() => {
-            if (!isCancelled) {
-                incrementProgress();
-            }
-        }, 15);
+        cardsData.forEach((card, index) => {
+            const intervalId = setInterval(() => {
+                setProgresses((prev) =>
+                    prev.map((progress, i) =>
+                        i === index && progress < card.target
+                            ? progress + 1
+                            : progress
+                    )
+                );
+            }, 15);
+            intervalIds.push(intervalId);
+        });
 
         const newBlocks = cardsData.map((card) =>
             Array.from({ length: 100 }, (_, i) => ({
@@ -98,10 +94,9 @@ const SkillsCards = ({isAnimated}) => {
         setBlocks(newBlocks);
 
         return () => {
-            isCancelled = true;
-            clearInterval(interval);
+            intervalIds.forEach(clearInterval);
         };
-    }, [isAnimated]);
+    }, [isAnimated, clearData]);
 
     return (
         <div className="skills__wrapper">
@@ -110,7 +105,9 @@ const SkillsCards = ({isAnimated}) => {
                     isAnimated={isAnimated}
                     key={id}
                     ref={(el) => (cardRefs.current[index] = el)}
-                    className={`skills__card ${flippedStates[index] ? 'active' : ''}`}
+                    className={`skills__card ${
+                        flippedStates[index] ? "active" : ""
+                    }`}
                     src={src}
                     alt={alt}
                     title={title}
@@ -118,8 +115,10 @@ const SkillsCards = ({isAnimated}) => {
                     progress={progresses[index]}
                     blocks={blocks[index]}
                     handleFlip={() => handleFlip(index)}
-                    onMouseMove={(event) => handleMouseMove(index, event)}
-                    />
+                    onMouseMove={(event) =>
+                        handleMouseMove(index, event)
+                    }
+                />
             ))}
         </div>
     );

@@ -36,10 +36,7 @@ const ResumePage = ({isAnimated}) => {
             <CSSTransition
                 in={isAnimated}
                 classNames="animated"
-                timeout={duration}
-                // mountOnEnter
-                // unmountOnExit
-                >
+                timeout={duration}>
                 <section className="resume">
                     <div className="resume__head">
                         <h2 className="resume__head-title fade-in-down">Resume</h2>

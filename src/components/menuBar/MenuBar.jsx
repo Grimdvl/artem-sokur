@@ -1,54 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const MenuBar = () => {
+const MenuBar = ({ activeLanguage, setActiveLanguage, isDarkMode, setDarkMode }) => {
     const [isMenuActive, setMenuActive] = useState(false);
-    const [isDarkMode, setDarkMode] = useState(false);
-    const [hasSkillsLoaded, setSkillsLoaded] = useState(false);
-    const [activeLanguage, setActiveLanguage] = useState('EN');
+
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem('language');
+        const savedMode = localStorage.getItem('darkMode') === 'true';
+        
+        if (savedLanguage) {
+            setActiveLanguage(savedLanguage);
+        }
+        
+        if (savedMode !== null) {
+            setDarkMode(savedMode);
+            applyMode(savedMode);
+        }
+    }, [setActiveLanguage, setDarkMode]);
+
+    const applyMode = (isDark) => {
+        const root = document.documentElement;
+        document.documentElement.classList.toggle("dark-mode", isDark);
+
+        if (isDark) {
+            root.style.setProperty("--main-color", "#2EA6FF");
+            root.style.setProperty("--text-color", "#FFF");
+            root.style.setProperty("--text-second", "#18222C");
+            root.style.setProperty("--cards-bg", "rgba(24, 34, 44, .75)");
+        } else {
+            root.style.setProperty("--main-color", "#FFA501");
+            root.style.setProperty("--text-color", "#000");
+            root.style.setProperty("--text-second", "#FFF");
+            root.style.setProperty("--cards-bg", "rgba(255, 255, 255, .75)");
+        }
+    };
 
     const toggleMenu = () => {
         setMenuActive(!isMenuActive);
     };
 
     const toggleMode = () => {
-        setDarkMode(!isDarkMode);
-        document.documentElement.classList.toggle('dark-mode');
-
-        const root = document.documentElement;
-
-        if (!isDarkMode) {
-            root.style.setProperty('--main-color', '#2EA6FF');
-            // root.style.setProperty('--second-color', '#FFA501');
-            root.style.setProperty('--text-color', '#FFF');
-            root.style.setProperty('--text-second', '#18222C');
-        } else {
-            root.style.setProperty('--main-color', '#FFA501');
-            // root.style.setProperty('--second-color', '#2EA6FF');
-            root.style.setProperty('--text-color', '#000');
-            root.style.setProperty('--text-second', '#FFF');
-        }
-
-        if (!hasSkillsLoaded) {
-            setSkillsLoaded(true);
-
-            clearSkills();
-            setTimeout(() => {
-                loadSkills();
-                setSkillsLoaded(false);
-            }, 500);
-        }
-    };
-
-    const clearSkills = () => {
-        console.log('Clearing skills data...');
-    };
-
-    const loadSkills = () => {
-        console.log('Loading skills data...');
+        setDarkMode((prev) => {
+            const newMode = !prev;
+            localStorage.setItem('darkMode', newMode);
+            applyMode(newMode);
+            return newMode;
+        });
     };
 
     const changeLanguage = (language) => {
         setActiveLanguage(language);
+        localStorage.setItem('language', language);
     };
 
     return (

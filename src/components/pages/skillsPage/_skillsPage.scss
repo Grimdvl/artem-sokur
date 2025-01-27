@@ -93,15 +93,16 @@
                 font-size: 1.4rem;
                 background: transparent;
                 box-shadow: none;
-                border: .2rem solid black;
+                border: .2rem solid var(--text-color);
+                color: var(--text-color);
                 letter-spacing: .1rem;
                 font-weight: 600;
                 transition: .5s ease;
                 &:hover {
-                    border: .2rem solid $main-color;
-                    color: #FFF;
-                    background: $main-color;
-                    box-shadow: 0 0 1rem $main-color;
+                    border: .2rem solid var(--main-color);
+                    color: var(--text-second);
+                    background: var(--main-color);
+                    box-shadow: 0 0 1rem var(--main-color);
                 }
                 &:focus {
                     outline: none;
@@ -110,7 +111,7 @@
             &::before {
                 content: '';
                 position: absolute;
-                background: radial-gradient($main-color, transparent, transparent);
+                background: radial-gradient(var(--main-color), transparent, transparent);
                 height: 50rem;
                 width: 50rem;
                 top: var(--y);
@@ -130,7 +131,8 @@
                 position: absolute;
                 inset: .2rem;
                 border-radius: 1.8rem;
-                background: rgba(255, 255, 255, 0.75);
+                background-color: var(--cards-bg, rgba(255, 255, 255, .75));
+                // background-color: rgba(24, 34, 44, .75);
             }
         }
         &-front {
@@ -150,7 +152,7 @@
                     position: absolute;
                     width: .1rem;
                     height: 1.5rem;
-                    background-color: black;
+                    background-color: var(--text-color);
                     top: 0;
                     left: 50%;
                     transform-origin: 50% 7rem;
@@ -159,8 +161,8 @@
                     animation: in 0.1s linear forwards;
                 }
                 .block.active {
-                    background-color: $main-color;
-                    box-shadow: 0 0 1rem $main-color, 0 0 2rem $main-color;
+                    background-color: var(--main-color);
+                    box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
                     will-change: background-color, box-shadow;
                 }
                 h3 {
@@ -181,7 +183,7 @@
                         margin-left: 1.5rem;
                     }
                     ion-icon {
-                        color: $main-color;
+                        color: var(--main-color);
                         font-size: 7rem;
                     }
                 }
@@ -255,7 +257,7 @@
             span {
                 display: block;
                 height: 100%;
-                background-color: $main-color;
+                background-color: var(--main-color);
                 border-radius: .4rem;
                 filter: blur(.2rem);
                 width: 0;

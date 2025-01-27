@@ -119,7 +119,7 @@
 
 @keyframes diodButtonIn {
     0% {
-        box-shadow: 0 0 1rem $main-color;
+        box-shadow: 0 0 1rem var(--main-color);
     }
     100% {
         box-shadow: none;
@@ -130,7 +130,7 @@
         box-shadow: none;
     }
     100% {
-        box-shadow: 0 0 1rem $main-color;
+        box-shadow: 0 0 1rem var(--main-color);
     }
 }
 
@@ -249,10 +249,10 @@
 
 @keyframes changeColor {
     0% {
-        background-image: linear-gradient($main-color, $main-color);
+        background-image: linear-gradient(var(--main-color), var(--main-color));
     }
     50% {
-        background-image: linear-gradient($main-color, $second-color);
+        background-image: linear-gradient(var(--main-color), $second-color);
     }
     100% {
         background-image: linear-gradient($second-color, $second-color);

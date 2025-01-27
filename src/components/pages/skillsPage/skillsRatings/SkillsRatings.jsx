@@ -1,16 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import ratingsData from "./RatingsData";
 import RatingsItems from "./RatingsItems";
 
 const SkillsRatings = ({ isAnimated }) => {
-    const [progresses, setProgresses] = useState(
-        ratingsData.map(() => ({ value: 0, width: 0 }))
+    const initialProgresses = useMemo(
+        () => ratingsData.map(() => ({ value: 0, width: 0 })),
+        []
     );
 
-    // const initialProgresses = useMemo(
-    //     () => ratingsData.map(() => ({ value: 0, width: 0 })),
-    //     []
-    // );
+    const [progresses, setProgresses] = useState(initialProgresses);
 
     const incrementProgress = useCallback((index, target) => {
         setProgresses((prev) =>
@@ -19,19 +17,21 @@ const SkillsRatings = ({ isAnimated }) => {
                     ? {
                         value: progress.value + 1,
                         width: progress.value + 1,
-                    } : progress
+                    }
+                    : progress
             )
         );
     }, []);
 
     const decrementProgress = useCallback((index) => {
         setProgresses((prev) =>
-            prev.map((prog, i) =>
-                i === index && prog.value > 0
+            prev.map((progress, i) =>
+                i === index && progress.value > 0
                     ? {
-                        value: prog.value - 1,
-                        width: prog.value - 1,
-                    } : prog
+                        value: progress.value - 1,
+                        width: progress.value - 1,
+                    }
+                    : progress
             )
         );
     }, []);
@@ -44,12 +44,21 @@ const SkillsRatings = ({ isAnimated }) => {
         ratingsData.forEach((rating, index) => {
             const intervalId = setInterval(() => {
                 setProgresses((prev) => {
-                    if (prev[index].value >= rating.target) {
+                    const currentValue = prev[index].value;
+
+                    if (currentValue >= rating.target) {
                         clearInterval(intervalId);
                         return prev;
                     }
-                    incrementProgress(index, rating.target);
-                    return prev;
+
+                    return prev.map((progress, i) =>
+                        i === index
+                            ? {
+                                value: currentValue + 1,
+                                width: currentValue + 1,
+                            }
+                            : progress
+                    );
                 });
             }, 15);
 
@@ -69,12 +78,21 @@ const SkillsRatings = ({ isAnimated }) => {
         progresses.forEach((progress, index) => {
             const intervalId = setInterval(() => {
                 setProgresses((prev) => {
-                    if (prev[index].value <= 0) {
+                    const currentValue = prev[index].value;
+
+                    if (currentValue <= 0) {
                         clearInterval(intervalId);
                         return prev;
                     }
-                    decrementProgress(index);
-                    return prev;
+
+                    return prev.map((prog, i) =>
+                        i === index
+                            ? {
+                                value: currentValue - 1,
+                                width: currentValue - 1,
+                            }
+                            : prog
+                    );
                 });
             }, 15);
 
