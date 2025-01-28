@@ -11,16 +11,16 @@ import {
 } from '../pages';
 
 function App() {
-    const [activeSection, setActiveSection] = useState('');
+    const [activeSection, setActiveSection] = useState('promo');
     const [showPromo, setShowPromo] = useState(false);
-
     const [activeLanguage, setActiveLanguage] = useState('EN');
     const [isDarkMode, setDarkMode] = useState(false);
 
     return (
         <main className="app">
             <NavigationMenu
-                setActiveSectionCallback={setActiveSection}
+                setActiveSection={setActiveSection}
+                activeSection={activeSection}
                 setShowPromo={setShowPromo}
                 showPromo={showPromo}/>
 

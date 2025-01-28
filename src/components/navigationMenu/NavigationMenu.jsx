@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 
-const NavigationMenu = ({setActiveSectionCallback, setShowPromo, showPromo}) => {
+const NavigationMenu = ({setActiveSection, activeSection}) => {
     const sections = useMemo(
         () => ({
             resume: "person-outline",
@@ -10,7 +10,6 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo, showPromo}) => 
         }),
     []);
 
-    const [activeSection, setActiveSection] = useState('');
     const [isIndicatorVisible, setIndicatorVisible] = useState(false);
 
     useEffect(() => {
@@ -35,19 +34,16 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo, showPromo}) => 
             if (foundSection) {
                 setActiveSection(foundSection);
                 setIndicatorVisible(true);
-                setActiveSectionCallback(foundSection);
-                setShowPromo(false);
+                setActiveSection(foundSection);
             } else if (scrollY <= 400) {
-                setShowPromo(true);
                 setIndicatorVisible(false);
-                setActiveSection('');
-                setActiveSectionCallback('promo');
+                setActiveSection('promo');
             }
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [sections, setActiveSectionCallback, setShowPromo, showPromo]);
+    }, [sections, setActiveSection]);
 
     const NavigationMenuItem = ({ section, icon }) => {
         return (
@@ -76,7 +72,7 @@ const NavigationMenu = ({setActiveSectionCallback, setShowPromo, showPromo}) => 
                 </ul>
             </nav>
 
-            <a href="#promo" className={`home ${!showPromo ? 'active' : ''}`}>
+            <a href="#promo" className={`home ${activeSection !== 'promo' ? 'active' : ''}`}>
                 <i className="home--up bx bx-chevron-up"></i>
             </a>
         </div>
