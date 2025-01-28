@@ -59,7 +59,7 @@
             animation: promoSubtitle 6s linear infinite;
             animation-delay: 2s;
             will-change: background-position;
-            transition: 1s opacity;
+            transition: 1s opacity, background-image .5s, -webkit-text-stroke .5s;
             &::before {
                 content: '';
                 position: absolute;

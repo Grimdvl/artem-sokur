@@ -1,74 +1,76 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback, memo } from 'react';
 
-const NavigationMenu = ({setActiveSection, activeSection}) => {
-    const sections = useMemo(
-        () => ({
-            resume: "person-outline",
-            skills: "school-outline",
-            portfolio: "briefcase-outline",
-            contacts: "mail-outline",
-        }),
-    []);
+const NavigationMenuItem = memo(({ section, icon, activeSection }) => {
+    return (
+        <li className={`navigation__link ${activeSection === section ? 'active' : ''}`}>
+            <a href={`#${section}`} className="navigation__link-item">
+                <span className="icon">
+                    <ion-icon name={icon}></ion-icon>
+                </span>
+            </a>
+        </li>
+    );
+});
+
+const NavigationMenu = ({ setActiveSection, activeSection }) => {
+    const sections = useMemo(() => ({
+        resume: "person-outline",
+        skills: "school-outline",
+        portfolio: "briefcase-outline",
+        contacts: "mail-outline",
+    }), []);
 
     const [isIndicatorVisible, setIndicatorVisible] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
+    const handleScroll = useCallback(() => {
+        const scrollY = window.scrollY;
 
-            let foundSection = null;
+        let foundSection = null;
 
-            for (const section of Object.keys(sections)) {
-                const sectionElement = document.getElementById(section);
-                if (sectionElement) {
-                    const offsetTop = sectionElement.offsetTop - 300;
-                    const offsetHeight = sectionElement.offsetHeight;
+        for (const section of Object.keys(sections)) {
+            const sectionElement = document.getElementById(section);
+            if (sectionElement) {
+                const offsetTop = sectionElement.offsetTop - 300;
+                const offsetHeight = sectionElement.offsetHeight;
 
-                    if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
-                        foundSection = section;
-                        break;
-                    }
+                if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
+                    foundSection = section;
+                    break;
                 }
             }
+        }
 
-            if (foundSection) {
-                setActiveSection(foundSection);
-                setIndicatorVisible(true);
-                setActiveSection(foundSection);
-            } else if (scrollY <= 400) {
-                setIndicatorVisible(false);
-                setActiveSection('promo');
-            }
-        };
+        if (foundSection && foundSection !== activeSection) {
+            setActiveSection(foundSection);
+            setIndicatorVisible(true);
+        } else if (!foundSection && scrollY <= 400 && activeSection !== 'promo') {
+            setActiveSection('promo');
+            setIndicatorVisible(false);
+        }
+    }, [sections, setActiveSection, activeSection]);
 
+    useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [sections, setActiveSection]);
+    }, [handleScroll]);
 
-    const NavigationMenuItem = ({ section, icon }) => {
-        return (
-            <li className={`navigation__link ${activeSection === section ? 'active' : ''}`}>
-                <a href={`#${section}`} className="navigation__link-item">
-                    <span className="icon">
-                        <ion-icon name={icon}></ion-icon>
-                    </span>
-                </a>
-            </li>
-        );
-    };
+    const navigationItems = useMemo(() => {
+        return Object.keys(sections).map((section) => (
+            <NavigationMenuItem
+                key={section}
+                section={section}
+                icon={sections[section]}
+                activeSection={activeSection}
+            />
+        ));
+    }, [sections, activeSection]);
 
     return (
         <div className="wrapper-nav">
             <nav className="navigation">
                 <ul className="navigation__list">
-                    {Object.keys(sections).map((section) => (
-                        <NavigationMenuItem
-                            key={section}
-                            section={section}
-                            icon={sections[section]}
-                        />
-                    ))}
-                        <div className={`indicator ${isIndicatorVisible ? 'show' : 'hidden'}`}></div>
+                    {navigationItems}
+                    <div className={`indicator ${isIndicatorVisible ? 'show' : 'hidden'}`}></div>
                 </ul>
             </nav>
 

@@ -9,6 +9,7 @@
     align-items: center;
     z-index: 4;
     animation: slideBottom 1s ease forwards;
+    @include disappear;
     &-bar {
         position: absolute;
         width: 5.5rem;
@@ -73,7 +74,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: transparent;
+            background-color: var(--text-second);
             cursor: pointer;
             width: 5rem;
             height: 5rem;
@@ -127,14 +128,14 @@
             &-bar {
                 transform: rotate(-130deg);
                 color: var(--main-color);
-                background-color: transparent;
+                background-color: var(--text-second);
                 box-shadow: none;
             }
             &-list {
                 transform: rotate(calc(-110deg / 4 * var(--i))) translateX(0);
                 .mode {
                     box-shadow: 0 0 1rem var(--main-color);
-                    transition: .5s box-shadow, .5s border;
+                    transition: .5s box-shadow, .5s border, .5s background-color;
                     &:hover {
                         box-shadow: none;
                     }

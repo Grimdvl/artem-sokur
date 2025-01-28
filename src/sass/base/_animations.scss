@@ -35,7 +35,7 @@
     .fade-in-up {
         transform: translateY(0);
         @include appear;
-        transition: transform 1s, visibility 1s, opacity 1s;
+        transition: transform 1s, visibility 1s, opacity 1s, background-color .5s;
     }
     .fade-in-left {
         transform: translateX(0);
@@ -45,21 +45,9 @@
     .fade-in {
         @include appear;
         transform: scale(1);
-        transition: transform 1s 1s, visibility 1s 1s, opacity 1s 1s;
+        transition: transform 1s 1s, visibility 1s 1s, opacity 1s 1s, background-color .5s, color .5s, border-color .5s;
     }
 }
-
-// .slide-enter, .slide-exit {
-//     @include disappear;
-// }
-
-// .slide-enter-active, .slide-enter-done {
-//     @include appear;
-// }
-
-// .slide-exit-active, .slide-exit-done {
-//     @include disappear;
-// }
 
 @keyframes floatPhoto {
     0% {
@@ -137,6 +125,19 @@
 @keyframes slideTop {
     0% {
         transform: translateY(10rem);
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        transform: translateY(-10rem);
         visibility: hidden;
         opacity: 0;
     }
