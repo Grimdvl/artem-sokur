@@ -116,6 +116,7 @@
         }
     }
     .portfolio {
+        // $index: calc(1vw + 1vw);
         &__items {
             flex-direction: column;
             &-item {
@@ -172,9 +173,9 @@
         }
         &__slide {
             position: absolute;
-            top: 55%;
+            top: 50rem;
             transform: rotate(90deg);
-            left: -5rem;
+            left: -6rem;
         }
     }
 }

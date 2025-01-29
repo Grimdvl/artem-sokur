@@ -18,7 +18,7 @@ const PortfolioItems = ({ src, alt, title, description, linkGit, link, isHidden,
                         rel="noopener noreferrer"
                         href={linkGit}
                     >
-                        <box-icon name="github" type="logo" color={isDarkMode ? "#000" : "fff"}></box-icon>
+                        <box-icon name="github" type="logo" color={isDarkMode ? "#000" : "#fff"}></box-icon>
                     </a>
                     <a
                         className="descr__links-site"
@@ -26,7 +26,7 @@ const PortfolioItems = ({ src, alt, title, description, linkGit, link, isHidden,
                         rel="noopener noreferrer"
                         href={link}
                     >
-                        <box-icon name="link-external" color={isDarkMode ? "#000" : "fff"}></box-icon>
+                        <box-icon name="link-external" color={isDarkMode ? "#000" : "#fff"}></box-icon>
                     </a>
                 </div>
             </div>
