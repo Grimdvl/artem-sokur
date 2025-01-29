@@ -82,7 +82,6 @@
 }
 
 @media (max-width: 768px) {
-    $index: calc(1vw + 1vw);
     .promo {
         flex-direction: column;
         &__content {
@@ -174,9 +173,9 @@
         }
         &__slide {
             position: absolute;
-            top: 55%;
+            top: 60%;
             transform: rotate(90deg);
-            right: 0;
+            right: -5%;
         }
     }
 }

@@ -34,6 +34,8 @@
         gap: .4rem;
         perspective: calc($index * 35);
         @media (min-width: 769px) {
+            $index: calc(1vw + 1.5vw);
+            perspective: calc($index * 35);
             &:not(.active) {
                 .portfolio__items-item {
                     &:hover {
