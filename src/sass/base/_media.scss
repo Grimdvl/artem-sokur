@@ -72,7 +72,7 @@
     .contacts {
         justify-content: flex-start;
         flex-direction: column;
-        margin-bottom: 0;
+        // margin-bottom: 0;
         &__photo {
             &-img {
                 width: 60vw;
@@ -173,9 +173,9 @@
         }
         &__slide {
             position: absolute;
-            top: 60%;
+            top: 55%;
             transform: rotate(90deg);
-            right: -5%;
+            right: -5vw;
         }
     }
 }
@@ -209,7 +209,7 @@
         }
     }
     .contacts {
-        padding-bottom: 0;
+        // padding-bottom: 0;
         &__input {
             grid-column: 1/3;
         }
