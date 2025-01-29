@@ -24,6 +24,21 @@ html {
     color: var(--text-color);
     transition: .5s color;
     will-change: color;
+    &.dark-mode {
+        .resume__wrapper-column ul li .resume__item-icon img {
+            filter: invert(100%);
+        }
+        // .portfolio__items-item .descr__links {
+        //     box-icon {
+        //         filter: invert(100%);
+        //     }
+        //     &:hover {
+        //         box-icon {
+        //             filter: invert(0%);
+        //         }
+        //     }
+        // }
+    }
 }
 
 body {

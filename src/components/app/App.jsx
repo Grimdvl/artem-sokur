@@ -37,7 +37,7 @@ function App() {
                     setShowPromo={setShowPromo}/>
                 <ResumePage isAnimated={activeSection === 'resume'} />
                 <SkillsPage isAnimated={activeSection === 'skills'} isDarkMode={isDarkMode}/>
-                <PortfolioPage isAnimated={activeSection === 'portfolio'} />
+                <PortfolioPage isAnimated={activeSection === 'portfolio'} isDarkMode={isDarkMode}/>
                 <ContactsPage isAnimated={activeSection === 'contacts'} />
             </Suspense>
         </main>

@@ -29,7 +29,7 @@ const cardsData = [
         alt: "react",
         title: "React",
         description: "This library enables the creation of web applications. I can create an incredibly interactive product tailored to your goals.",
-        target: 10
+        target: 70
     },
     {
         id: 5,

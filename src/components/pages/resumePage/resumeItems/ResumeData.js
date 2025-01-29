@@ -17,7 +17,7 @@ const resumeData = [
         src: courses,
         alt: 'courses',
         role: "Front-End for beginners | Intro to React - 'courses'",
-        description: "The Masters Academy is a subsidiary project of the IT company Master of Code, which operates in the Canadian market and is aimed at educating the younger generation. I received insights from developers from a product company who had 3-5 years of development experience. I learned to use Git as well as work in a team.",
+        description: "The Masters Academy, a subsidiary of IT company Master of Code, operates in the Canadian market to educate the younger generation. I gained insights from developers with 3-5 years of experience, learned Git, and collaborated in a team.",
     },
     {
         id: 3,

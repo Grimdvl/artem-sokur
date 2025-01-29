@@ -7,7 +7,7 @@ import mainPhoto from '../../../assets/img/photo/main-photo.jpg';
 const ResumePage = ({isAnimated}) => {
     const [currentIndex, setCurrentIndex] = useState(-1);
 
-    const duration = 500;
+    const duration = 1000;
     const totalDuration = resumeData.length * (duration / 1000);
 
     useEffect(() => {
@@ -32,55 +32,53 @@ const ResumePage = ({isAnimated}) => {
     }, [isAnimated]);
 
     return (
-        <div id="resume" className="section-placeholder">
-            <CSSTransition
-                in={isAnimated}
-                classNames="animated"
-                timeout={duration}>
-                <section className="resume">
-                    <div className="resume__head">
-                        <h2 className="resume__head-title fade-in-down">Resume</h2>
-                        <div className="resume__head-subtitle fade-in-right">Here's how I'll be helpful for you</div>
-                        <div className="resume__head-divider divider fade-in-up"></div>
+        <CSSTransition
+            in={isAnimated}
+            classNames="animated"
+            timeout={duration}>
+            <section className="resume" id="resume">
+                <div className="resume__head">
+                    <h2 className="resume__head-title fade-in-down">Resume</h2>
+                    <div className="resume__head-subtitle fade-in-right">Here's how I'll be helpful for you</div>
+                    <div className="resume__head-divider divider fade-in-up"></div>
+                </div>
+
+                <div className="resume__wrapper">
+                    <div className="resume__wrapper-photo fade-in">
+                        <img src={mainPhoto} alt="mainPhoto" />
                     </div>
 
-                    <div className="resume__wrapper">
-                        <div className="resume__wrapper-photo fade-in">
-                            <img src={mainPhoto} alt="mainPhoto" />
-                        </div>
-
-                        <div className="resume__wrapper-column">
-                            <h3 className="column-title fade-in-left">Experience</h3>
-                            <ul 
-                                style={{ '--totalDuration': `${totalDuration}s` }}
-                                className='list'
-                                >
-                                {resumeData.map(({id, src, alt, company, role, description}, index) => (
-                                    <CSSTransition
-                                        key={id}
-                                        in={index <= currentIndex}
-                                        timeout={duration}
-                                        className={`list__item ${
-                                            index <= currentIndex ? 'animated' : ''
-                                        }`}
-                                        >
-                                        <li>
-                                            <ResumeItems
-                                                src={src}
-                                                alt={alt}
-                                                company={company}
-                                                role={role}
-                                                description={description}
-                                            />
-                                        </li>
-                                    </CSSTransition>
-                                ))}
-                            </ul>
-                        </div>
+                    <div className="resume__wrapper-column">
+                        <h3 className="column-title fade-in-left">Experience</h3>
+                        <ul 
+                            style={{ '--totalDuration': `${totalDuration}s` }}
+                            className='list'
+                            >
+                            {resumeData.map(({id, src, alt, company, role, description}, index) => (
+                                <CSSTransition
+                                    key={id}
+                                    in={index <= currentIndex}
+                                    timeout={duration}
+                                    className={`list__item ${
+                                        index <= currentIndex ? 'animated' : ''
+                                    }`}
+                                    >
+                                    <li>
+                                        <ResumeItems
+                                            src={src}
+                                            alt={alt}
+                                            company={company}
+                                            role={role}
+                                            description={description}
+                                        />
+                                    </li>
+                                </CSSTransition>
+                            ))}
+                        </ul>
                     </div>
-                </section>
-            </CSSTransition>
-        </div>
+                </div>
+            </section>
+        </CSSTransition>
     );
 };
 

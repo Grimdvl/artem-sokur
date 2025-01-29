@@ -86,12 +86,10 @@ const SkillsRatings = ({ isAnimated }) => {
                     }
 
                     return prev.map((prog, i) =>
-                        i === index
-                            ? {
+                        i === index ? {
                                 value: currentValue - 1,
                                 width: currentValue - 1,
-                            }
-                            : prog
+                            } : prog
                     );
                 });
             }, 15);

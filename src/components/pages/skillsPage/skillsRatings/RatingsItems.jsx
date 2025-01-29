@@ -5,10 +5,7 @@ const RatingsItems = ({ title, progress, isAnimated }) => {
         <CSSTransition
             in={isAnimated}
             timeout={1000}
-            classNames="animated"
-            mountOnEnter
-            unmountOnExit
-            >
+            classNames="animated">
             <div className="skills__ratings-item">
                 <div className="skills__ratings-head">
                     <div className="skills__ratings-title">{title}</div>

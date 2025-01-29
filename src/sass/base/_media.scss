@@ -82,6 +82,7 @@
 }
 
 @media (max-width: 768px) {
+    $index: calc(1vw + 1vw);
     .promo {
         flex-direction: column;
         &__content {
@@ -143,7 +144,7 @@
                     width: 100%;
                     transition: .5s all;
                     transform: translateZ(calc($index * 10));
-                    margin: .45vh 0;
+                    margin: .45vw 0;
                     & + * {
                         transform: translateZ(calc($index * 8.5)) rotateX(-35deg) rotateY(0);
                         & + * {
@@ -173,16 +174,9 @@
         }
         &__slide {
             position: absolute;
-            top: 50%;
+            top: 55%;
             transform: rotate(90deg);
-            // height: 15rem;
-            // gap: 5rem;
-            right: -5vw;
-
-            // writing-mode: vertical-rl;
-            // &-prev, &-next {
-            //     transform: rotate(90deg);
-            // }
+            right: 0;
         }
     }
 }
@@ -201,18 +195,12 @@
         }
     }
     .portfolio {
-        // &__wrapper {
-            // height: 80vh;
-        // }
         &__items {
             &-item {
                 .descr {
                     &-title {
                         font-size: 1.4rem;
                     }
-                    // &-text {
-                    //     font-size: .9rem;
-                    // }
                     &__links {
                         margin-bottom: 0.5rem;
                         gap: 0.5rem;
@@ -264,9 +252,6 @@
 
 @media (max-width: 450px) {
     .portfolio {
-        // &__wrapper {
-        //     height: 70vh;
-        // }
         &__items {
             &-item {
                 &.active {
@@ -276,9 +261,6 @@
                     &-title {
                         font-size: 1.3rem;
                     }
-                    // &-text {
-                    //     font-size: 1rem;
-                    // }
                 }
             }
         }
