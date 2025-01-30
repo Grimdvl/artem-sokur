@@ -1,9 +1,10 @@
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
+import translations from '../../../components/menuBar/LanguageData';
 
-const ContactsPage = ({isAnimated}) => {
-    const typedElement = useRef(null)
+const ContactsPage = ({ isAnimated, activeLanguage }) => {
+    const typedElement = useRef(null);
 
     useEffect(() => {
         if (typedElement.current) {
@@ -21,16 +22,17 @@ const ContactsPage = ({isAnimated}) => {
         }
     }, [isAnimated]);
 
+    const { title, subtitle, formText, placeholders, sendButton, policyText, privacyPolicy } = translations[activeLanguage].contacts;
+
     return (
-        <CSSTransition
-            in={isAnimated}
-            timeout={1000}
-            classNames="animated">
+        <CSSTransition in={isAnimated} timeout={1000} classNames="animated">
             <section className="contacts" id="contacts">
                 <div className="contacts__descr">
                     <div className="contacts-head">
-                        <h2 className="contacts__descr-title fade-in-down">Contacts</h2>
-                        <div className="contacts__contact-subtitle fade-in-right">Text me on <span ref={typedElement} className="multiple-text"></span></div>
+                        <h2 className="contacts__descr-title fade-in-down">{title}</h2>
+                        <div className="contacts__contact-subtitle fade-in-right">
+                            {subtitle} <span ref={typedElement} className="multiple-text"></span>
+                        </div>
                         <div className="contacts__contact-divider divider fade-in-up"></div>
                     </div>
                     
@@ -45,30 +47,30 @@ const ContactsPage = ({isAnimated}) => {
                             <i className='bx bxl-instagram-alt'></i>
                         </a>
                     </div>
-                    <div className="contacts__text fade-in">Or leave your contact information, and I will get in touch with you:</div>
+                    <div className="contacts__text fade-in">{formText}</div>
 
                     <form action="#" className="contacts__form fade-in">
                         <div className="contacts__input">
                             <input required name="name" id="name" type="text"/>
-                            <label htmlFor="name">Your name</label>
+                            <label htmlFor="name">{placeholders.name}</label>
                         </div>
                         <div className="contacts__input">
                             <input required name="phone" id="phone" type="phone"/>
-                            <label htmlFor="phone">Your number</label>
+                            <label htmlFor="phone">{placeholders.phone}</label>
                         </div>
                         <div className="contacts__input">
                             <input required name="email" id="email" type="email"/>
-                            <label htmlFor="email">Your email</label>
+                            <label htmlFor="email">{placeholders.email}</label>
                         </div>
                         <div className="contacts__textarea">
                             <textarea required name="text" id="text"></textarea>
-                            <label htmlFor="text">Your message</label>
+                            <label htmlFor="text">{placeholders.message}</label>
                         </div>
                         <div className="contacts__triggers">
-                            <button className="contacts__btn btn">Send message</button>
+                            <button className="contacts__btn btn">{sendButton}</button>
                             <div className="contacts__policy">
                                 <input required name="checkbox" id="checkbox" type="checkbox"/>
-                                <span>I agree with the <a href="/policy/policy.html" target="_blank" rel="noopener noreferrer">privacy policy</a></span>
+                                <span>{policyText} <a href="/policy/policy.html" target="_blank" rel="noopener noreferrer">{privacyPolicy}</a></span>
                             </div>
                         </div>
                     </form>
@@ -76,6 +78,6 @@ const ContactsPage = ({isAnimated}) => {
             </section>
         </CSSTransition>
     );
-}
+};
 
 export default ContactsPage;

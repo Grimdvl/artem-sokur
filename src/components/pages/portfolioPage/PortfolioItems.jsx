@@ -1,16 +1,18 @@
-const PortfolioItems = ({ src, alt, title, description, linkGit, link, isHidden, isActive, onClick, isDarkMode }) => {
+const PortfolioItems = ({ src, alt, title, description, linkGit, link, isHidden, isActive, onClick, isDarkMode, activeLanguage }) => {
     return (
         <div
-            className={`portfolio__items-item ${isActive 
-                ? 'active' : ''} ${isHidden 
-                ? 'hidden' : ''}`}
+            className={`portfolio__items-item ${isActive ? 'active' : ''} ${isHidden ? 'hidden' : ''}`}
             tabIndex="1"
             onClick={onClick}
         >
             <img className="img" src={src} alt={alt} />
             <div className="descr">
-                <h3 className="descr-title">{title}</h3>
-                <p className="descr-text">{description}</p>
+                <h3 className="descr-title">
+                    {title[activeLanguage]}  {/* Выводим текст на выбранном языке */}
+                </h3>
+                <p className="descr-text">
+                    {description[activeLanguage]}  {/* Выводим описание на выбранном языке */}
+                </p>
                 <div className="descr__links">
                     <a
                         className="descr__links-git"

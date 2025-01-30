@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import portfolioData from './PortfolioData';
 import PortfolioItems from './PortfolioItems';
 
-const PortfolioPage = ({isAnimated, isDarkMode}) => {
+const PortfolioPage = ({isAnimated, isDarkMode, activeLanguage}) => {
     const totalItems = portfolioData.length;
     const itemsToShow = 10;
 
@@ -128,6 +128,7 @@ const PortfolioPage = ({isAnimated, isDarkMode}) => {
                                         isActive={activeIndex === index}
                                         isHidden={!isVisible}
                                         isDarkMode={isDarkMode}
+                                        activeLanguage={activeLanguage}
                                         onClick={() => handleItemClick(index)}/>
                                 );
                             })}

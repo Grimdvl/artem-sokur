@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 
 import NavigationMenu from '../navigationMenu/NavigationMenu';
 import MenuBar from '../menuBar/MenuBar';
@@ -30,16 +30,21 @@ function App() {
                 isDarkMode={isDarkMode}
                 setDarkMode={setDarkMode}/>
 
-            <Suspense fallback={<div>Loading...</div>}>
-                <PromoPage
-                    isAnimated={activeSection === 'promo'}
-                    showPromo={showPromo}
-                    setShowPromo={setShowPromo}/>
-                <ResumePage isAnimated={activeSection === 'resume'} />
-                <SkillsPage isAnimated={activeSection === 'skills'} isDarkMode={isDarkMode}/>
-                <PortfolioPage isAnimated={activeSection === 'portfolio'} isDarkMode={isDarkMode}/>
-                <ContactsPage isAnimated={activeSection === 'contacts'} />
-            </Suspense>
+            <PromoPage
+                isAnimated={activeSection === 'promo'}
+                showPromo={showPromo}
+                setShowPromo={setShowPromo}
+                activeLanguage={activeLanguage}/>
+            <ResumePage isAnimated={activeSection === 'resume'} activeLanguage={activeLanguage}/>
+            <SkillsPage
+                isAnimated={activeSection === 'skills'}
+                isDarkMode={isDarkMode}
+                activeLanguage={activeLanguage}/>
+            <PortfolioPage
+                isAnimated={activeSection === 'portfolio'}
+                isDarkMode={isDarkMode}
+                activeLanguage={activeLanguage}/>
+            <ContactsPage isAnimated={activeSection === 'contacts'} activeLanguage={activeLanguage}/>
         </main>
     );
 }
