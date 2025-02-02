@@ -30,7 +30,7 @@ const translations = {
         },
         contacts: {
             title: "Контакты",
-            subtitle: "Свяжитесь со мной в",
+            subtitle: "Напишите мне в",
             formText: "Или оставьте свои контактные данные, и я с вами свяжусь:",
             placeholders: {
                 name: "Ваше имя",

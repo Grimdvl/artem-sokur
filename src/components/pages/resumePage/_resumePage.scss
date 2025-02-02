@@ -159,7 +159,7 @@
                 }
                 .list {
                     &:before {
-                        animation: resumeAfter var(--totalDuration) .15s forwards linear;
+                        animation: resumeAfter var(--totalDuration) 0s forwards linear;
                     }
                     &__item {
                         .resume__item {

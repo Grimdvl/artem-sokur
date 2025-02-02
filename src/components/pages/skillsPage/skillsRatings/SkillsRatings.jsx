@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import ratingsData from "./RatingsData";
 import RatingsItems from "./RatingsItems";
 
-const SkillsRatings = ({ isAnimated }) => {
+const SkillsRatings = ({ isAnimated, activeLanguage }) => {
     const initialProgresses = useMemo(
         () => ratingsData.map(() => ({ value: 0, width: 0 })),
         []
@@ -86,10 +86,12 @@ const SkillsRatings = ({ isAnimated }) => {
                     }
 
                     return prev.map((prog, i) =>
-                        i === index ? {
+                        i === index
+                            ? {
                                 value: currentValue - 1,
                                 width: currentValue - 1,
-                            } : prog
+                            }
+                            : prog
                     );
                 });
             }, 15);
@@ -104,11 +106,11 @@ const SkillsRatings = ({ isAnimated }) => {
 
     return (
         <div className="skills__ratings">
-            {ratingsData.map(({ id, title, target }, index) => (
+            {ratingsData.map(({ id, translations, target }, index) => (
                 <RatingsItems
                     isAnimated={isAnimated}
                     key={id}
-                    title={title}
+                    title={translations[activeLanguage]}
                     target={target}
                     progress={progresses[index]}
                 />

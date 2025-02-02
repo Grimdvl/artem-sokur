@@ -1,8 +1,14 @@
 import { CSSTransition } from 'react-transition-group';
 import React, { forwardRef } from 'react';
 
+const translations = {
+    EN: { readMore: "Read more", back: "Back" },
+    UA: { readMore: "Детальніше", back: "Назад" },
+    RU: { readMore: "Подробнее", back: "Назад" }
+};
+
 const CardsItems = forwardRef(
-    ({ src, alt, title, description, progress, blocks, handleFlip, className, onMouseMove, isAnimated }, ref) => {
+    ({ src, alt, title, description, progress, blocks, handleFlip, className, onMouseMove, isAnimated, activeLanguage }, ref) => {
         return (
             <div className={className}
                 ref={ref}
@@ -36,7 +42,7 @@ const CardsItems = forwardRef(
                             className="skills__card-front--button"
                             onClick={handleFlip}
                         >
-                            Read more
+                            {translations[activeLanguage]?.readMore || translations.EN.readMore}
                         </button>
                     </div>
                 </CSSTransition>
@@ -49,7 +55,7 @@ const CardsItems = forwardRef(
                         className="skills__card-back--button"
                         onClick={handleFlip}
                     >
-                        Back
+                        {translations[activeLanguage]?.back || translations.EN.back}
                     </button>
                 </div>
             </div>

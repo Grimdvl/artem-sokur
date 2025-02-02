@@ -1,10 +1,10 @@
 import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 import ResumeItems from './resumeItems/ResumeItems';
-import resumeData from './resumeItems/ResumeData';
+import resumeData, { translations } from './resumeItems/ResumeData';
 import mainPhoto from '../../../assets/img/photo/main-photo.jpg';
 
-const ResumePage = ({isAnimated}) => {
+const ResumePage = ({ isAnimated, activeLanguage }) => {
     const [currentIndex, setCurrentIndex] = useState(-1);
 
     const duration = 1000;
@@ -32,14 +32,15 @@ const ResumePage = ({isAnimated}) => {
     }, [isAnimated]);
 
     return (
-        <CSSTransition
-            in={isAnimated}
-            classNames="animated"
-            timeout={duration}>
+        <CSSTransition in={isAnimated} classNames="animated" timeout={duration}>
             <section className="resume" id="resume">
                 <div className="resume__head">
-                    <h2 className="resume__head-title fade-in-down">Resume</h2>
-                    <div className="resume__head-subtitle fade-in-right">Here's how I'll be helpful for you</div>
+                    <h2 className="resume__head-title fade-in-down">
+                        {translations.resumeTitle[activeLanguage]}
+                    </h2>
+                    <div className="resume__head-subtitle fade-in-right">
+                        {translations.resumeSubtitle[activeLanguage]}
+                    </div>
                     <div className="resume__head-divider divider fade-in-up"></div>
                 </div>
 
@@ -49,27 +50,23 @@ const ResumePage = ({isAnimated}) => {
                     </div>
 
                     <div className="resume__wrapper-column">
-                        <h3 className="column-title fade-in-left">Experience</h3>
-                        <ul 
-                            style={{ '--totalDuration': `${totalDuration}s` }}
-                            className='list'
-                            >
-                            {resumeData.map(({id, src, alt, company, role, description}, index) => (
+                        <h3 className="column-title fade-in-left">
+                            {translations.experienceTitle[activeLanguage]}
+                        </h3>
+                        <ul style={{ '--totalDuration': `${totalDuration}s` }} className='list'>
+                            {resumeData.map(({ id, src, alt, company, role, description }, index) => (
                                 <CSSTransition
                                     key={id}
                                     in={index <= currentIndex}
                                     timeout={duration}
-                                    className={`list__item ${
-                                        index <= currentIndex ? 'animated' : ''
-                                    }`}
-                                    >
+                                    className={`list__item ${index <= currentIndex ? 'animated' : ''}`}>
                                     <li>
                                         <ResumeItems
                                             src={src}
                                             alt={alt}
-                                            company={company}
-                                            role={role}
-                                            description={description}
+                                            company={company[activeLanguage]}
+                                            role={role[activeLanguage]}
+                                            description={description[activeLanguage]}
                                         />
                                     </li>
                                 </CSSTransition>

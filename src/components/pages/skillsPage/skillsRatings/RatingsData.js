@@ -1,24 +1,40 @@
 const ratingsData = [
     {
         id: 1,
-        title: "Creating websites",
+        translations: {
+            EN: "Creating websites",
+            RU: "Создание сайтов",
+            UA: "Створення сайтів"
+        },
         target: 100
     },
     {
         id: 2,
-        title: "Developing applications",
+        translations: {
+            EN: "Developing applications",
+            RU: "Разработка приложений",
+            UA: "Розробка додатків"
+        },
         target: 70
     },
     {
         id: 3,
-        title: "Data handling",
+        translations: {
+            EN: "Data handling",
+            RU: "Работа с данными",
+            UA: "Обробка даних"
+        },
         target: 90
     },
     {
         id: 4,
-        title: "Soft skills",
+        translations: {
+            EN: "Soft skills",
+            RU: "Гибкие навыки",
+            UA: "Гнучкі навички"
+        },
         target: 95
     }
-]
+];
 
 export default ratingsData;

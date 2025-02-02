@@ -3,14 +3,10 @@ import VanillaTilt from "vanilla-tilt";
 import CardsItems from "./CardsItems";
 import cardsData from "./CardsData";
 
-const SkillsCards = ({ isAnimated }) => {
+const SkillsCards = ({ isAnimated, activeLanguage }) => {
     const cardRefs = useRef([]);
-    const [flippedStates, setFlippedStates] = useState(
-        cardsData.map(() => false)
-    );
-    const [progresses, setProgresses] = useState(
-        cardsData.map(() => 0)
-    );
+    const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
+    const [progresses, setProgresses] = useState(cardsData.map(() => 0));
     const [blocks, setBlocks] = useState(
         cardsData.map(() =>
             Array.from({ length: 100 }, (_, i) => ({
@@ -36,13 +32,12 @@ const SkillsCards = ({ isAnimated }) => {
     }, []);
 
     const handleFlip = useCallback((index) => {
-        setFlippedStates((prev) =>
-            prev.map((state, i) => (i === index ? !state : state))
-        );
+        setFlippedStates((prev) => prev.map((state, i) => (i === index ? !state : state)));
     }, []);
 
     const handleMouseMove = useCallback((index, event) => {
         const card = cardRefs.current[index];
+        if (!card) return;
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
@@ -69,29 +64,24 @@ const SkillsCards = ({ isAnimated }) => {
         }
 
         const intervalIds = [];
-
         cardsData.forEach((card, index) => {
             const intervalId = setInterval(() => {
                 setProgresses((prev) =>
-                    prev.map((progress, i) =>
-                        i === index && progress < card.target
-                            ? progress + 1
-                            : progress
-                    )
+                    prev.map((progress, i) => (i === index && progress < card.target ? progress + 1 : progress))
                 );
             }, 15);
             intervalIds.push(intervalId);
         });
 
-        const newBlocks = cardsData.map((card) =>
-            Array.from({ length: 100 }, (_, i) => ({
-                isActive: i < card.target,
-                rotation: 3.6 * (i + 1),
-                delay: (i + 1) / 60,
-            }))
+        setBlocks(
+            cardsData.map((card) =>
+                Array.from({ length: 100 }, (_, i) => ({
+                    isActive: i < card.target,
+                    rotation: 3.6 * (i + 1),
+                    delay: (i + 1) / 60,
+                }))
+            )
         );
-
-        setBlocks(newBlocks);
 
         return () => {
             intervalIds.forEach(clearInterval);
@@ -105,19 +95,16 @@ const SkillsCards = ({ isAnimated }) => {
                     isAnimated={isAnimated}
                     key={id}
                     ref={(el) => (cardRefs.current[index] = el)}
-                    className={`skills__card ${
-                        flippedStates[index] ? "active" : ""
-                    }`}
+                    className={`skills__card ${flippedStates[index] ? "active" : ""}`}
                     src={src}
                     alt={alt}
-                    title={title}
-                    description={description}
+                    title={title[activeLanguage] || title.EN}
+                    description={description[activeLanguage] || description.EN}
                     progress={progresses[index]}
                     blocks={blocks[index]}
                     handleFlip={() => handleFlip(index)}
-                    onMouseMove={(event) =>
-                        handleMouseMove(index, event)
-                    }
+                    onMouseMove={(event) => handleMouseMove(index, event)}
+                    activeLanguage={activeLanguage}
                 />
             ))}
         </div>
