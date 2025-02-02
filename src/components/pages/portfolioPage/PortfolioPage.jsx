@@ -1,7 +1,7 @@
 import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import portfolioData from './PortfolioData';
+import { portfolioData, portfolioTitles } from './PortfolioData';
 import PortfolioItems from './PortfolioItems';
 
 const PortfolioPage = ({isAnimated, isDarkMode, activeLanguage}) => {
@@ -106,8 +106,8 @@ const PortfolioPage = ({isAnimated, isDarkMode, activeLanguage}) => {
             classNames="animated">
             <section className="portfolio" id="portfolio">
                     <div className="portfolio-head">
-                        <h2 className="portfolio__head-title fade-in-down">Portfolio</h2>
-                        <div className="portfolio__head-subtitle fade-in-right">My works</div>
+                        <h2 className="portfolio__head-title fade-in-down">{portfolioTitles.title[activeLanguage]}</h2>
+                        <div className="portfolio__head-subtitle fade-in-right">{portfolioTitles.subtitle[activeLanguage]}</div>
                         <div className="portfolio__headdivider divider fade-in-up"></div>
                     </div>
 
