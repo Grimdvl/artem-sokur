@@ -231,7 +231,7 @@ const portfolioData = [
             UA: "Скоро..."
         },
         linkGit: "https://github.com/Grimdvl/childhood",
-        link: "https://grimdvl.github.io/childhood/"
+        link: "http://childhood.infy.uk/"
     },
     {
         id: 13,
