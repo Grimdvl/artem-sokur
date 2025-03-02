@@ -218,7 +218,7 @@ const portfolioData = [
     },
     {
         id: 12,
-        // src: require("../../../assets/img/projects/childhood.jpg"),
+        src: require("../../../assets/img/projects/childhood.jpg"),
         alt: "childhood-project",
         title: {
             EN: "Childhood",
