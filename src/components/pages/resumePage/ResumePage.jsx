@@ -7,7 +7,7 @@ import mainPhoto from '../../../assets/img/photo/main-photo.jpg';
 const ResumePage = ({ isAnimated, activeLanguage }) => {
     const [currentIndex, setCurrentIndex] = useState(-1);
 
-    const duration = 1000;
+    const duration = 500;
     const totalDuration = resumeData.length * (duration / 1000);
 
     useEffect(() => {
@@ -60,7 +60,7 @@ const ResumePage = ({ isAnimated, activeLanguage }) => {
                                     in={index <= currentIndex}
                                     timeout={duration}
                                     className={`list__item ${index <= currentIndex ? 'animated' : ''}`}>
-                                    <li>
+                                    <li style={{ '--duration': `${duration/1000}s` }}>
                                         <ResumeItems
                                             src={src}
                                             alt={alt}

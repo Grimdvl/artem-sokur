@@ -167,10 +167,10 @@
                         }
                         &.animated {
                             &:before {
-                                animation: resumeBefore .5s .5s forwards;
+                                animation: resumeBefore calc(var(--duration)/2) calc(var(--duration)/2) forwards;
                             }
                             .resume__item {
-                                animation: in .5s 1s forwards;
+                                animation: in calc(var(--duration)/2) calc(var(--duration)/2) forwards;
                             }
                         }
                     }

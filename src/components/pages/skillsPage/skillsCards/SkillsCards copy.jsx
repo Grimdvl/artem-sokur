@@ -1,14 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import VanillaTilt from "vanilla-tilt";
-// import { CSSTransition } from "react-transition-group";
 import CardsItems from "./CardsItems";
 import cardsData from "./CardsData";
 
 const SkillsCards = ({ isAnimated, activeLanguage }) => {
     const cardRefs = useRef([]);
-    // const progressCircleRef = useRef(null);
-    // const progressTextRef = useRef(null);
-
     const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
     const [progresses, setProgresses] = useState(cardsData.map(() => 0));
     const [blocks, setBlocks] = useState(
@@ -53,7 +49,10 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
     useEffect(() => {
         cardRefs.current.forEach((card) => {
             if (card) {
-                VanillaTilt.init(card, { max: 10, speed: 400 });
+                VanillaTilt.init(card, {
+                    max: 10,
+                    speed: 400,
+                });
             }
         });
     }, []);

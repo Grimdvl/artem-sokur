@@ -1,0 +1,47 @@
+.skills {
+    &__ratings {
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+        grid-auto-rows: minmax(7rem, auto);
+        column-gap: 4.5rem;
+        row-gap: 3.5rem;
+        &-item {
+            display: grid;
+            justify-content: center;
+            align-content: space-between;
+            .skills__ratings-head {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        &-title {
+            font-size: 1.4rem;
+            line-height: 2.1rem;
+            position: relative;
+            padding: .2rem 0 0 1.3rem;
+            @include before_circle;
+        }
+        &-counter {
+            font-size: 1.4rem;
+            line-height: 2.1rem;
+        }
+        &-line {
+            width: 35rem;
+            height: 1.4rem;
+            background-color: #E8E4DE;
+            border-radius: .4rem;
+            grid-column: 1/2;
+            transition: .5s;
+            span {
+                display: block;
+                height: 100%;
+                background-color: var(--main-color);
+                border-radius: .4rem;
+                filter: blur(.2rem);
+                width: 0;
+                transition: 1s background-color;
+            }
+        }
+    }
+}
