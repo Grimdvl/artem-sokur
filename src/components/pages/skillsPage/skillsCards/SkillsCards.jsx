@@ -11,29 +11,29 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
 
     const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
     const [progresses, setProgresses] = useState(cardsData.map(() => 0));
-    const [blocks, setBlocks] = useState(
-        cardsData.map(() =>
-            Array.from({ length: 100 }, (_, i) => ({
-                isActive: false,
-                rotation: 3.6 * (i + 1),
-                delay: (i + 1) / 60,
-            }))
-        )
-    );
+    // const [blocks, setBlocks] = useState(
+    //     cardsData.map(() =>
+    //         Array.from({ length: 100 }, (_, i) => ({
+    //             isActive: false,
+    //             rotation: 3.6 * (i + 1),
+    //             delay: (i + 1) / 60,
+    //         }))
+    //     )
+    // );
 
-    const clearData = useCallback(() => {
-        setProgresses(cardsData.map(() => 0));
-        setFlippedStates(cardsData.map(() => false));
-        setBlocks(
-            cardsData.map(() =>
-                Array.from({ length: 100 }, (_, i) => ({
-                    isActive: false,
-                    rotation: 3.6 * (i + 1),
-                    delay: (i + 1) / 60,
-                }))
-            )
-        );
-    }, []);
+    // const clearData = useCallback(() => {
+    //     setProgresses(cardsData.map(() => 0));
+    //     setFlippedStates(cardsData.map(() => false));
+    //     setBlocks(
+    //         cardsData.map(() =>
+    //             Array.from({ length: 100 }, (_, i) => ({
+    //                 isActive: false,
+    //                 rotation: 3.6 * (i + 1),
+    //                 delay: (i + 1) / 60,
+    //             }))
+    //         )
+    //     );
+    // }, []);
 
     const handleFlip = useCallback((index) => {
         setFlippedStates((prev) => prev.map((state, i) => (i === index ? !state : state)));
@@ -60,7 +60,7 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
 
     useEffect(() => {
         if (!isAnimated) {
-            clearData();
+            // clearData();
             return;
         }
 
@@ -74,20 +74,23 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
             intervalIds.push(intervalId);
         });
 
-        setBlocks(
-            cardsData.map((card) =>
-                Array.from({ length: 100 }, (_, i) => ({
-                    isActive: i < card.target,
-                    rotation: 3.6 * (i + 1),
-                    delay: (i + 1) / 60,
-                }))
-            )
-        );
+        // setBlocks(
+        //     cardsData.map((card) =>
+        //         Array.from({ length: 100 }, (_, i) => ({
+        //             isActive: i < card.target,
+        //             rotation: 3.6 * (i + 1),
+        //             delay: (i + 1) / 60,
+        //         }))
+        //     )
+        // );
 
         return () => {
             intervalIds.forEach(clearInterval);
         };
-    }, [isAnimated, clearData]);
+    }, [
+        isAnimated,
+        // clearData
+    ]);
 
     return (
         <div className="skills__wrapper">
@@ -102,7 +105,7 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
                     title={title[activeLanguage] || title.EN}
                     description={description[activeLanguage] || description.EN}
                     progress={progresses[index]}
-                    blocks={blocks[index]}
+                    // blocks={blocks[index]}
                     handleFlip={() => handleFlip(index)}
                     onMouseMove={(event) => handleMouseMove(index, event)}
                     activeLanguage={activeLanguage}

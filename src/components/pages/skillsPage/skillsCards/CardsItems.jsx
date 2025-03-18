@@ -8,13 +8,13 @@ const translations = {
 };
 
 const CardsItems = forwardRef(
-    ({ src, alt, title, description, progress, blocks, handleFlip, className, onMouseMove, isAnimated, activeLanguage }, ref) => {
+    ({ src, alt, title, description, progress, handleFlip, className, onMouseMove, isAnimated, activeLanguage }, ref) => {
         const progressCircleRef = useRef(null);
         const progressTextRef = useRef(null);
 
         const updateProgress = (value) => {
             const maxProgress = 100;
-            const circumference = 2 * Math.PI * 60; // 60 - радиус круга
+            const circumference = 2 * Math.PI * 60;
             const offset = circumference - (value / maxProgress) * circumference;
             if (progressCircleRef.current) {
                 progressCircleRef.current.style.strokeDashoffset = offset;
@@ -50,11 +50,11 @@ const CardsItems = forwardRef(
                                         <circle className="progress-ring__background" cx="75" cy="75" r="60" />
                                         <circle ref={progressCircleRef} className="progress-ring__circle" cx="75" cy="75" r="60" />
                                     </svg>
-                                    <div ref={progressTextRef} className="progress-text">0%</div>
+                                    <div ref={progressTextRef} className="progress-text"><sup>%</sup></div>
                                 </div>
                                 {/* <div className="counter">{progress}<sup>%</sup></div> */}
                             </h3>
-                            {blocks.map((block, index) => (
+                            {/* {blocks.map((block, index) => (
                                 <div
                                     key={index}
                                     className={`block${block.isActive ? ' active' : ''}`}
@@ -63,7 +63,7 @@ const CardsItems = forwardRef(
                                         animationDelay: `${block.delay}s`,
                                     }}
                                 ></div>
-                            ))}
+                            ))} */}
                         </div>
                         <button type="button" className="skills__card-front--button" onClick={handleFlip}>
                             {translations[activeLanguage]?.readMore || translations.EN.readMore}
