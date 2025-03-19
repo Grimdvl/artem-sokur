@@ -112,3 +112,16 @@
 // };
 
 // export default SkillsCards;
+
+                                {/* <div className="counter">{progress}<sup>%</sup></div> */}
+                                // </h3>
+                                {/* {blocks.map((block, index) => (
+                                    <div
+                                        key={index}
+                                        className={`block${block.isActive ? ' active' : ''}`}
+                                        style={{
+                                            transform: `rotate(${block.rotation}deg)`,
+                                            animationDelay: `${block.delay}s`,
+                                        }}
+                                    ></div>
+                                ))} */}

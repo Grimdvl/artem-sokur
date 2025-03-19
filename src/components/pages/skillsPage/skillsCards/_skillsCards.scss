@@ -85,18 +85,15 @@
             }
         }
         &-front {
-            position: relative;
             &-icon {
-                position: relative;
                 width: 100%;
                 height: 100%;
+                position: relative;
                 display: flex;
-                align-items: center;
                 justify-content: center;
+                align-items: center;
+                flex-direction: column;
                 z-index: 1;
-                font-weight: 500;
-                line-height: 1.5em;
-                font-size: 1.2em;
                 // .block {
                 //     display: none;
                 //     position: absolute;
@@ -115,26 +112,63 @@
                 //     box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
                 //     will-change: background-color, box-shadow;
                 // }
-                h3 {
+                ion-icon {
                     position: absolute;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-direction: column;
-                    gap: 5rem;
-                    left: 50%;
                     top: 50%;
-                    transform: translate(-50%, -55%);
-                    text-align: center;
-                    font-size: 2.5em;
-                    font-weight: 700;
-                    .counter {
-                        left: 1rem;
-                        margin-left: 1.5rem;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: var(--main-color);
+                    font-size: 7rem;
+                }
+                .progress {
+                    &-text {
+                        position: absolute;
+                        bottom: -15%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        font-size: 2.4rem;
+                        color: var(--text-color);
                     }
-                    ion-icon {
-                        color: var(--main-color);
-                        font-size: 7rem;
+                    &-ring {
+                        position: absolute;
+                        // top: 50%;
+                        // left: 50%;
+                        width: 100%;
+                        height: 100%;
+                        // transform: translate(-50%, -50%);
+                        transform: rotate(-90deg);
+                        &__background {
+                            // position: absolute;
+                            // top: 50%;
+                            // left: 50%;
+                            // top: 0;
+                            // left: 0;
+                            // width: 100%;
+                            // height: 100%;
+                            fill: none;
+                            stroke: #E8E4DE;
+                            // stroke: var(--text-color);
+                            stroke-width: 8;
+                        }
+                        &__circle {
+                            // position: absolute;
+                            // top: 50%;
+                            // left: 50%;
+                            // top: 0;
+                            // left: 0;
+                            // width: 100%;
+                            // height: 100%;
+                            fill: none;
+                            stroke: var(--main-color);
+                            filter: blur(0.2rem);
+                            // border: 0.2rem solid var(--main-color);
+                            // box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
+                            stroke-width: 10;
+                            stroke-linecap: round;
+                            stroke-dasharray: 377;
+                            stroke-dashoffset: 377;
+                            transition: stroke-dashoffset 0s linear;
+                        }
                     }
                 }
             }
@@ -159,43 +193,4 @@
             }
         }
     }
-}
-.progress-text {
-    position: absolute;
-    bottom: -15%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    color: var(--text-color);
-}
-.progress-container {
-    position: absolute;
-    top: -55%;
-    left: -55%;
-    width: 15rem;
-    height: 15rem;
-}
-
-.progress-ring {
-    transform: rotate(-90deg);
-}
-
-.progress-ring__background {
-    fill: none;
-    stroke: var(--text-color);
-    // border: 1rem solid var(--main-color);
-    // box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
-    stroke-width: 10;
-}
-.progress-ring__circle {
-    fill: none;
-    stroke: var(--main-color);
-    filter: blur(0.2rem);
-    // border: 0.2rem solid var(--main-color);
-    // box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
-    stroke-width: 10;
-    stroke-linecap: round;
-    stroke-dasharray: 377; /* 2 * π * r (2 * 3.14 * 60) */
-    stroke-dashoffset: 377;
-    transition: stroke-dashoffset 0s linear;   
 }
