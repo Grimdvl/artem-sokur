@@ -114,60 +114,36 @@
                 // }
                 ion-icon {
                     position: absolute;
-                    top: 50%;
+                    top: 40%;
                     left: 50%;
-                    transform: translate(-50%, -50%);
+                    transform: translate(-50%, -45%);
                     color: var(--main-color);
                     font-size: 7rem;
                 }
                 .progress {
                     &-text {
-                        position: absolute;
-                        bottom: -15%;
-                        left: 50%;
-                        transform: translateX(-50%);
                         font-size: 2.4rem;
                         color: var(--text-color);
                     }
                     &-ring {
-                        position: absolute;
-                        // top: 50%;
-                        // left: 50%;
-                        width: 100%;
-                        height: 100%;
-                        // transform: translate(-50%, -50%);
+                        width: 150px;
+                        height: 150px;
                         transform: rotate(-90deg);
                         &__background {
-                            // position: absolute;
-                            // top: 50%;
-                            // left: 50%;
-                            // top: 0;
-                            // left: 0;
-                            // width: 100%;
-                            // height: 100%;
                             fill: none;
-                            stroke: #E8E4DE;
-                            // stroke: var(--text-color);
+                            // stroke: #E8E4DE;
+                            stroke: var(--text-color);
                             stroke-width: 8;
                         }
                         &__circle {
-                            // position: absolute;
-                            // top: 50%;
-                            // left: 50%;
-                            // top: 0;
-                            // left: 0;
-                            // width: 100%;
-                            // height: 100%;
                             fill: none;
                             stroke: var(--main-color);
                             filter: blur(0.2rem);
-                            // border: 0.2rem solid var(--main-color);
-                            // box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
                             stroke-width: 10;
                             stroke-linecap: round;
                             stroke-dasharray: 377;
                             stroke-dashoffset: 377;
-                            transition: stroke-dashoffset 0s linear;
+                            transition: stroke-dashoffset linear;
                         }
                     }
                 }

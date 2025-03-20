@@ -4,8 +4,7 @@ import RatingsItems from "./RatingsItems";
 
 const SkillsRatings = ({ isAnimated, activeLanguage }) => {
     const initialProgresses = useMemo(
-        () => ratingsData.map(() => ({ value: 0, width: 0 })),
-        []
+        () => ratingsData.map(() => ({ value: 0, width: 0 })),[]
     );
 
     const [progresses, setProgresses] = useState(initialProgresses);
