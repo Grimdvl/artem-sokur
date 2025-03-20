@@ -1,39 +1,16 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
-// import { CSSTransition } from "react-transition-group";
 import CardsItems from "./CardsItems";
 import cardsData from "./CardsData";
 
 const SkillsCards = ({ isAnimated, activeLanguage }) => {
     const cardRefs = useRef([]);
-    // const progressCircleRef = useRef(null);
-    // const progressTextRef = useRef(null);
+    const circumference = 2 * Math.PI * 60;
 
+    const initialProgresses = useMemo(() => cardsData.map(() => ({ value: 0, strokeDashoffset: circumference })), [circumference]);
+
+    const [progresses, setProgresses] = useState(initialProgresses);
     const [flippedStates, setFlippedStates] = useState(cardsData.map(() => false));
-    const [progresses, setProgresses] = useState(cardsData.map(() => 0));
-    // const [blocks, setBlocks] = useState(
-    //     cardsData.map(() =>
-    //         Array.from({ length: 100 }, (_, i) => ({
-    //             isActive: false,
-    //             rotation: 3.6 * (i + 1),
-    //             delay: (i + 1) / 60,
-    //         }))
-    //     )
-    // );
-
-    // const clearData = useCallback(() => {
-    //     setProgresses(cardsData.map(() => 0));
-    //     setFlippedStates(cardsData.map(() => false));
-    //     setBlocks(
-    //         cardsData.map(() =>
-    //             Array.from({ length: 100 }, (_, i) => ({
-    //                 isActive: false,
-    //                 rotation: 3.6 * (i + 1),
-    //                 delay: (i + 1) / 60,
-    //             }))
-    //         )
-    //     );
-    // }, []);
 
     const handleFlip = useCallback((index) => {
         setFlippedStates((prev) => prev.map((state, i) => (i === index ? !state : state)));
@@ -42,6 +19,7 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
     const handleMouseMove = useCallback((index, event) => {
         const card = cardRefs.current[index];
         if (!card) return;
+
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
@@ -52,51 +30,52 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
 
     useEffect(() => {
         cardRefs.current.forEach((card) => {
-            if (card) {
+            if (card && !card.hasAttribute("data-tilt-initialized")) {
                 VanillaTilt.init(card, { max: 10, speed: 400 });
+                card.setAttribute("data-tilt-initialized", "true");
             }
         });
     }, []);
 
     useEffect(() => {
-        if (!isAnimated) {
-            // clearData();
-            return;
-        }
+        if (!isAnimated) return;
 
         const intervalIds = [];
+
         cardsData.forEach((card, index) => {
+            let currentValue = 0;
+            const speed = 30;
+
             const intervalId = setInterval(() => {
-                setProgresses((prev) =>
-                    prev.map((progress, i) => (i === index && progress < card.target ? progress + 1 : progress))
-                );
-            }, 15);
+                setProgresses((prev) => {
+                    const nextValue = Math.min(currentValue + 1, card.target);
+                    currentValue = nextValue;
+
+                    if (nextValue >= card.target) {
+                        clearInterval(intervalId);
+                    }
+
+                    return prev.map((progress, i) =>
+                        i === index
+                            ? {
+                                value: nextValue,
+                                strokeDashoffset: circumference - (nextValue / 100) * circumference,
+                            }
+                            : progress
+                    );
+                });
+            }, speed);
+
             intervalIds.push(intervalId);
         });
 
-        // setBlocks(
-        //     cardsData.map((card) =>
-        //         Array.from({ length: 100 }, (_, i) => ({
-        //             isActive: i < card.target,
-        //             rotation: 3.6 * (i + 1),
-        //             delay: (i + 1) / 60,
-        //         }))
-        //     )
-        // );
-
-        return () => {
-            intervalIds.forEach(clearInterval);
-        };
-    }, [
-        isAnimated,
-        // clearData
-    ]);
+        return () => intervalIds.forEach(clearInterval);
+    }, [isAnimated, circumference]);
 
     return (
         <div className="skills__wrapper">
             {cardsData.map(({ id, src, alt, title, description }, index) => (
                 <CardsItems
-                    isAnimated={isAnimated}
                     key={id}
                     ref={(el) => (cardRefs.current[index] = el)}
                     className={`skills__card ${flippedStates[index] ? "active" : ""}`}
@@ -104,11 +83,10 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
                     alt={alt}
                     title={title[activeLanguage] || title.EN}
                     description={description[activeLanguage] || description.EN}
-                    progress={progresses[index]}
-                    // blocks={blocks[index]}
+                    progress={progresses[index] || { value: 0, strokeDashoffset: circumference }}
                     handleFlip={() => handleFlip(index)}
-                    onMouseMove={(event) => handleMouseMove(index, event)}
                     activeLanguage={activeLanguage}
+                    onMouseMove={(event) => handleMouseMove(index, event)}
                 />
             ))}
         </div>
