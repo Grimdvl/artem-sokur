@@ -18,10 +18,12 @@ function App() {
         localStorage.getItem('darkMode') === 'true'
     );
     const [isLoading, setIsLoading] = useState(true);
+    const [hasLoaded, setHasLoaded] = useState(false); // 🚀 Новый флаг
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
+            setTimeout(() => setHasLoaded(true), 50); // 🔥 Даем небольшой запас
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -68,23 +70,23 @@ function App() {
             />
 
             <PromoPage
-                isAnimated={activeSection === 'promo'}
+                isAnimated={hasLoaded && activeSection === 'promo'} // 🔥 Анимация включится только после загрузки
                 showPromo={showPromo}
                 setShowPromo={setShowPromo}
                 activeLanguage={activeLanguage}
             />
-            <ResumePage isAnimated={activeSection === 'resume'} activeLanguage={activeLanguage} />
+            <ResumePage isAnimated={hasLoaded && activeSection === 'resume'} activeLanguage={activeLanguage} />
             <SkillsPage
-                isAnimated={activeSection === 'skills'}
+                isAnimated={hasLoaded && activeSection === 'skills'}
                 isDarkMode={isDarkMode}
                 activeLanguage={activeLanguage}
             />
             <PortfolioPage
-                isAnimated={activeSection === 'portfolio'}
+                isAnimated={hasLoaded && activeSection === 'portfolio'}
                 isDarkMode={isDarkMode}
                 activeLanguage={activeLanguage}
             />
-            <ContactsPage isAnimated={activeSection === 'contacts'} activeLanguage={activeLanguage} />
+            <ContactsPage isAnimated={hasLoaded && activeSection === 'contacts'} activeLanguage={activeLanguage} />
         </main>
     );
 }
