@@ -60,7 +60,6 @@ const MenuBar = ({ activeLanguage, setActiveLanguage, isDarkMode, setDarkMode })
                 <button className="menu-bar" onClick={toggleMenu}>
                     <ion-icon name="add-outline"></ion-icon>
                 </button>
-
                 <li style={{ '--i': 0 }} className="menu-list">
                     <button className={`mode ${isDarkMode ? 'active' : ''}`} onClick={toggleMode}>
                         <ion-icon class="mode--light md hydrated" name="sunny-outline" role="img"></ion-icon>

@@ -14,7 +14,7 @@ const SkillsRatings = ({ isAnimated, activeLanguage }) => {
 
         ratingsData.forEach((rating, index) => {
             let currentValue = 0;
-            const speed = 30;
+            const speed = 20;
 
             const intervalId = setInterval(() => {
                 setProgresses((prev) => {

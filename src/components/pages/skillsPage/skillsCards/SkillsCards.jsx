@@ -44,7 +44,7 @@ const SkillsCards = ({ isAnimated, activeLanguage }) => {
 
         cardsData.forEach((card, index) => {
             let currentValue = 0;
-            const speed = 30;
+            const speed = 20;
 
             const intervalId = setInterval(() => {
                 setProgresses((prev) => {

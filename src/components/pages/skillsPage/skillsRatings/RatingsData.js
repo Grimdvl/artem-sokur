@@ -33,7 +33,7 @@ const ratingsData = [
             RU: "Гибкие навыки",
             UA: "Гнучкі навички"
         },
-        target: 95
+        target: 90
     }
 ];
 
