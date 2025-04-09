@@ -55,6 +55,13 @@ const NavigationMenu = ({ isAnimated, setActiveAttribute, activeAttribute, setAc
             }
             if (foundAttribute) break;
         }
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setIsAnimated(true);
+    //     }, 1000);
+
+    //     return () => clearTimeout(timer);
+    // }, []);
 
         if (foundSection && foundSection !== activeSection) {
             setActiveSection(foundSection);
