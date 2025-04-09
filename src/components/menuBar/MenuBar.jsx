@@ -1,6 +1,7 @@
+import { CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
 
-const MenuBar = ({ activeLanguage, setActiveLanguage, isDarkMode, setDarkMode }) => {
+const MenuBar = ({ isAnimated, activeLanguage, setActiveLanguage, isDarkMode, setDarkMode }) => {
     const [isMenuActive, setMenuActive] = useState(false);
 
     useEffect(() => {
@@ -53,6 +54,7 @@ const MenuBar = ({ activeLanguage, setActiveLanguage, isDarkMode, setDarkMode })
     };
 
     return (
+        <CSSTransition in={isAnimated} timeout={1000} unmountOnExit>
         <>
             <div className={`color ${isDarkMode ? 'active' : ''}`}></div>
             
@@ -79,6 +81,7 @@ const MenuBar = ({ activeLanguage, setActiveLanguage, isDarkMode, setDarkMode })
                 ))}
             </ul>
         </>
+        </CSSTransition>
     );
 };
 

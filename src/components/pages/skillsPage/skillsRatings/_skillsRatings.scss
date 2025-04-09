@@ -7,9 +7,15 @@
         column-gap: 4.5rem;
         row-gap: 3.5rem;
         &-item {
+            @include disappear;
             display: grid;
             justify-content: center;
             align-content: space-between;
+            &.animated-enter-active, .animated-enter-done {
+                &.fade-in-up {
+                    transition: transform 1s 1s, visibility 1s 1s, opacity 1s 1s, background-color 0.5s;
+                }
+            }
             .skills__ratings-head {
                 display: flex;
                 justify-content: space-between;

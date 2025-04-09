@@ -6,7 +6,7 @@ const RatingsItems = ({ title, progress, isAnimated }) => {
             in={isAnimated}
             timeout={1000}
             classNames="animated">
-            <div className="skills__ratings-item">
+            <div className="skills__ratings-item fade-in-up" data-skills-ratings-items>
                 <div className="skills__ratings-head">
                     <div className="skills__ratings-title">{title}</div>
                     <div

@@ -1,4 +1,4 @@
-.animated-enter {
+.animated-enter, .animated-exit, .animated-exit-active, .animated-exit-done {
     .fade-in-down {
         transform: translateY(-10rem);
         @include disappear;

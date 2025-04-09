@@ -17,7 +17,7 @@ const translations = {
     }
 };
 
-const SkillsPage = ({ isAnimated, isDarkMode, activeLanguage }) => {
+const SkillsPage = ({ isAnimated, activeAttribute, isDarkMode, activeLanguage }) => {
     return (
         <CSSTransition in={isAnimated} timeout={1000} classNames="animated">
             <section className="skills" id="skills">
@@ -34,14 +34,13 @@ const SkillsPage = ({ isAnimated, isDarkMode, activeLanguage }) => {
                 <SkillsCards
                     key={isDarkMode ? "dark-mode-skills" : "light-mode-skills"}
                     isAnimated={isAnimated}
-                    isDarkMode={isDarkMode}
                     activeLanguage={activeLanguage}
+                    activeAttribute={activeAttribute}
                 />
 
                 <SkillsRatings
                     key={isDarkMode ? "dark-mode-ratings" : "light-mode-ratings"}
                     isAnimated={isAnimated}
-                    isDarkMode={isDarkMode}
                     activeLanguage={activeLanguage}
                 />
             </section>

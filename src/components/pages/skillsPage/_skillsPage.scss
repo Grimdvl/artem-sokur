@@ -12,6 +12,14 @@
         justify-content: space-around;
         gap: 3rem;
         padding: 0 1rem;
+        &-card {
+            @include disappear;
+            &.animated-enter-active, .animated-enter-done {
+                &.fade-in-up {
+                    transition: transform 1s .5s, visibility 1s .5s, opacity 1s .5s, background-color 0.5s;
+                }
+            }
+        }
     }
     &-title {
         @include disappear;
