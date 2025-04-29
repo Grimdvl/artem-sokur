@@ -148,16 +148,16 @@
     }
 }
 
-@keyframes transformX {
-    0% {
-        transform: translateX(-50%) scale(0);
-    }
-    100% {
-        transform: translateX(-50%) scale(1);
-    }
-}
+// @keyframes transformX {
+//     0% {
+//         transform: translateX(-50%) scale(0);
+//     }
+//     100% {
+//         transform: translateX(-50%) scale(1);
+//     }
+// }
 
-@keyframes resumeAfter {
+@keyframes resumeUl {
     0% {
         height: 0;
     }
@@ -166,7 +166,7 @@
     }
 }
 
-@keyframes resumeBefore {
+@keyframes resumeLi {
     0% {
         width: 0;
     }

@@ -164,7 +164,7 @@
                 }
                 .list {
                     &:before {
-                        animation: resumeAfter var(--totalDuration) 0s forwards linear;
+                        animation: resumeUl var(--totalDuration) 0s forwards linear;
                     }
                     &__item {
                         .resume__item {
@@ -172,7 +172,7 @@
                         }
                         &.animated {
                             &:before {
-                                animation: resumeBefore calc(var(--duration)/2) calc(var(--duration)/2) forwards;
+                                animation: resumeLi calc(var(--duration)/2) calc(var(--duration)/2) forwards;
                             }
                             .resume__item {
                                 animation: in calc(var(--duration)/2) calc(var(--duration)/2) forwards;
